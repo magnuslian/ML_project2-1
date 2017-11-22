@@ -1,12 +1,12 @@
 #!/usr/bin/python
 import os
 import sys
-import Image
+from PIL import Image
 import math
 import matplotlib.image as mpimg
 import numpy as np
 
-label_file = 'dummy_submission.csv'
+label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\sample_submission.csv'
 
 h = 16
 w = h
@@ -52,5 +52,5 @@ def reconstruct_from_labels(image_id):
     return im
 
 
-for i in range(1, 5):
+for i in range(1, 51):
     reconstruct_from_labels(i)
