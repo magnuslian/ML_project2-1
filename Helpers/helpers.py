@@ -82,3 +82,13 @@ def create_submission_from_prediction(pred):
                 con += 1
                 submission.append(c)
     return submission
+
+def true_positive_rate(pred,y):
+    # Get non-zeros in prediction and grountruth arrays
+    zn = np.nonzero(pred)[0]
+    yn = np.nonzero(y)[0]
+
+    # percentage of indices with 1's in both yn and zn
+    TPR = (len(list(set(yn) & set(zn))) / float(len(pred))) * 100
+    TPR_round = round(TPR, 2)
+    return (str(TPR_round) + " %")

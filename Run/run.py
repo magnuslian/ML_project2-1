@@ -1,6 +1,7 @@
 from Helpers import helpers
 from Given import given
 from sklearn import cluster
+import numpy as np
 
 
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
@@ -19,6 +20,9 @@ kmeans.fit(X_train, Y_train)
 pred = kmeans.predict(X_test)
 
 
+
 submission = helpers.create_submission_from_prediction(pred)
 
-given.create_csv_submission(submission, pred, "first_try")
+print("True positive rate: " + helpers.true_positive_rate(pred,Y_train))
+
+given.create_csv_submission(submission, pred, "low TRP")
