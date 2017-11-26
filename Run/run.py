@@ -8,7 +8,7 @@ DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Mac
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
 imgs_train, gt_imgs_train = helpers.load_training_data(DATAPATH_TRAINING)
-X_train, Y_train = helpers.create_patches_and_arrays(imgs_train,0.25,gt_imgs_train)
+X_train, Y_train = helpers.create_patches_and_arrays(imgs_train, 0.25, gt_imgs_train)
 
 imgs_test = helpers.load_test_data(DATAPATH_TESTING)
 X_test = helpers.create_patches_and_arrays(imgs_test, 0.25)
