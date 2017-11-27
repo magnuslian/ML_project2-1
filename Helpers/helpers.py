@@ -55,13 +55,40 @@ def show_nth_image(imgs, gt_imgs, nth_image):
     fig1 = plt.figure(figsize=(10, 10))
     plt.imshow(cimg, cmap='Greys_r')
 
+def extract_test_data(filename, num_images):
+    """Extract the images into a 4D tensor [image index, y, x, channels].
+    Values are rescaled from [0, 255] down to [-0.5, 0.5].
+    """
+    image_dir_test = filename
+    files = os.listdir(image_dir_test)
+    print("Loading " + str(num_images) + " images")
+    files.sort(key=sort_key)
+
+    folder = []
+    for i in range(len(files)):
+        folder.append(image_dir_test + files[i] + "\\" + files[i] + ".png")
+
+    imgs = [given.load_image(folder[i]) for i in range(len(folder))]
+
+
+    num_images = len(imgs)
+    IMG_WIDTH = imgs[0].shape[0]
+    IMG_HEIGHT = imgs[0].shape[1]
+    N_PATCHES_PER_IMAGE = (IMG_WIDTH/IMG_PATCH_SIZE)*(IMG_HEIGHT/IMG_PATCH_SIZE)
+
+    img_patches = [given.img_crop(imgs[i], IMG_PATCH_SIZE, IMG_PATCH_SIZE) for i in range(num_images)]
+    data = [img_patches[i][j] for i in range(len(img_patches)) for j in range(len(img_patches[i]))]
+
+    return np.asarray(data)
+
+
 def extract_data(filename, num_images):
     """Extract the images into a 4D tensor [image index, y, x, channels].
     Values are rescaled from [0, 255] down to [-0.5, 0.5].
     """
     imgs = []
     for i in range(1, num_images+1):
-        imageid = "satImage_%.3d" % i
+        imageid = "images/" + "satImage_%.3d" % i
         image_filename = filename + imageid + ".png"
         if os.path.isfile(image_filename):
             print('Loading ' + image_filename)
@@ -85,7 +112,7 @@ def extract_labels(filename, num_images):
     """Extract the labels into a 1-hot matrix [image index, label index]."""
     gt_imgs = []
     for i in range(1, num_images+1):
-        imageid = "satImage_%.3d" % i
+        imageid = "groundtruth/" "satImage_%.3d" % i
         image_filename = filename + imageid + ".png"
         if os.path.isfile(image_filename):
             print('Loading ' + image_filename)

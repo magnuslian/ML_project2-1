@@ -6,7 +6,7 @@ import math
 import matplotlib.image as mpimg
 import numpy as np
 
-label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\sample_submission.csv'
+label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\first_try_with_neural_nets.csv'
 
 h = 16
 w = h
