@@ -1,8 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import os
 from Given import given
+from PIL import Image
 
+
+IMG_PATCH_SIZE = 16
+FOREGROUND_THRESHOLD = 0.25
 
 def load_training_data(datapath, number_of_images):
     # Load all images
@@ -42,6 +47,53 @@ def show_nth_image(imgs, gt_imgs, nth_image):
     cimg = given.concatenate_images(imgs[nth_image], gt_imgs[nth_image])
     fig1 = plt.figure(figsize=(10, 10))
     plt.imshow(cimg, cmap='Greys_r')
+
+def extract_data(filename, num_images):
+    """Extract the images into a 4D tensor [image index, y, x, channels].
+    Values are rescaled from [0, 255] down to [-0.5, 0.5].
+    """
+    imgs = []
+    for i in range(1, num_images+1):
+        imageid = "satImage_%.3d" % i
+        image_filename = filename + imageid + ".png"
+        if os.path.isfile(image_filename):
+            print('Loading ' + image_filename)
+            img = mpimg.imread(image_filename)
+            imgs.append(img)
+        else:
+            print ('File ' + image_filename + ' does not exist')
+
+    num_images = len(imgs)
+    IMG_WIDTH = imgs[0].shape[0]
+    IMG_HEIGHT = imgs[0].shape[1]
+    N_PATCHES_PER_IMAGE = (IMG_WIDTH/IMG_PATCH_SIZE)*(IMG_HEIGHT/IMG_PATCH_SIZE)
+
+    img_patches = [given.img_crop(imgs[i], IMG_PATCH_SIZE, IMG_PATCH_SIZE) for i in range(num_images)]
+    data = [img_patches[i][j] for i in range(len(img_patches)) for j in range(len(img_patches[i]))]
+
+    return np.asarray(data)
+
+# Extract label images
+def extract_labels(filename, num_images):
+    """Extract the labels into a 1-hot matrix [image index, label index]."""
+    gt_imgs = []
+    for i in range(1, num_images+1):
+        imageid = "satImage_%.3d" % i
+        image_filename = filename + imageid + ".png"
+        if os.path.isfile(image_filename):
+            print('Loading ' + image_filename)
+            img = mpimg.imread(image_filename)
+            gt_imgs.append(img)
+        else:
+            print('File ' + image_filename + ' does not exist')
+
+    num_images = len(gt_imgs)
+    gt_patches = [given.img_crop(gt_imgs[i], IMG_PATCH_SIZE, IMG_PATCH_SIZE) for i in range(num_images)]
+    data = np.asarray([gt_patches[i][j] for i in range(len(gt_patches)) for j in range(len(gt_patches[i]))])
+    labels = np.asarray([given.value_to_class(np.mean(data[i]), FOREGROUND_THRESHOLD) for i in range(len(data))])
+
+    # Convert to dense 1-hot representation.
+    return labels.astype(np.float32)
 
 
 def create_patches_and_arrays(imgs, FOREGROUND_THRESHOLD, gt_imgs=[]):

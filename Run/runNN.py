@@ -17,11 +17,14 @@ from Helpers import helpers
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
-imgs_train, gt_imgs_train = helpers.load_training_data(DATAPATH_TRAINING)
-X_train, Y_train = helpers.create_patches_and_arrays(imgs_train, 0.25, gt_imgs_train)
+NUM_TRAIN_IMAGES = 30
+SPLIT_DATA_TRAIN = 20
+SPLIT_DATA_TEST = NUM_TRAIN_IMAGES - SPLIT_DATA_TRAIN
 
-imgs_test = helpers.load_test_data(DATAPATH_TESTING)
-X_test = helpers.create_patches_and_arrays(imgs_test, 0.25)
+imgs = helpers.extract_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
+
+X_train = imgs[SPLIT_DATA_TRAIN]
+X_test = imgs[SPLIT_DATA_TEST]
 
 
 model = Sequential()
