@@ -2,7 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from Given import given
+from sklearn import preprocessing
 
+
+def normalize(data, mean = True, std = True):
+    scaler =  preprocessing.StandardScaler(copy=True, with_mean=mean, with_std=std)
+    scaler.fit(data)
+    new_data=scaler.fit_transform(data, y=None)
+    return new_data
 
 def load_training_data(datapath, number_of_images):
     # Load all images
