@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78e7369f-9d15-4373-90b6-726eb4953e26" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Helpers/helpers.py" afterPath="$PROJECT_DIR$/Helpers/helpers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Run/runNN.py" afterPath="$PROJECT_DIR$/Run/runNN.py" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Helpers/helpers.py" afterPath="$PROJECT_DIR$/Helpers/helpers.py" />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,18 +26,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="runKmeans.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Run/runKmeans.py">
+      <file leaf-file-name="mask_to_submission.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Given/mask_to_submission.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="13" selection-end-column="59" />
+            <state relative-caret-position="0">
+              <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
               <folding>
-                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#24#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="tf_aerial_images.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Given/tf_aerial_images.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,8 +68,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+=======
+      <file leaf-file-name="helpers.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Helpers/helpers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,8 +109,6 @@
       <find>FLAGS</find>
       <find>model</find>
       <find>conv1_weights</find>
-      <find>max</find>
-      <find>weig</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,8 +125,13 @@
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/Given/tf_aerial_images.py" />
         <option value="$PROJECT_DIR$/Run/run.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Helpers/helpers.py" />
         <option value="$PROJECT_DIR$/Run/runNN.py" />
+=======
+        <option value="$PROJECT_DIR$/neural_taken.py" />
+        <option value="$PROJECT_DIR$/Helpers/helpers.py" />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
       </list>
     </option>
   </component>
@@ -125,10 +141,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
-    <option name="width" value="1390" />
-    <option name="height" value="1756" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="698" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -148,6 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -159,23 +176,12 @@
             <path>
               <item name="ML_project2-1" type="b2602c69:ProjectViewProjectNode" />
               <item name="ML_project2-1" type="462c0819:PsiDirectoryNode" />
-              <item name="Given" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ML_project2-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ML_project2-1" type="462c0819:PsiDirectoryNode" />
               <item name="Helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ML_project2-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ML_project2-1" type="462c0819:PsiDirectoryNode" />
-              <item name="Run" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -235,7 +241,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ML_project2-1" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\magnu\Documents\NTNU\3 (Utveksling EPFL)\Machine Learning\Prosjekt2\ML_project2-1\Run\runKmeans.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Run/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -253,7 +259,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ML_project2-1" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\magnu\Documents\NTNU\3 (Utveksling EPFL)\Machine Learning\Prosjekt2\ML_project2-1\Run\runKmeans.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\magnu\Documents\NTNU\3 (Utveksling EPFL)\Machine Learning\Prosjekt2\ML_project2-1\Run\run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -325,20 +331,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="698" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21164021" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1825525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -346,6 +356,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -367,13 +378,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="44" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py" />
     <entry file="file://$PROJECT_DIR$/first_try" />
     <entry file="file://$PROJECT_DIR$/Given/segment_aerial_images.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -382,13 +387,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Run/runKmeans.py">
+    <entry file="file://$PROJECT_DIR$/Run/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
           <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -396,9 +399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1887">
           <caret line="116" column="32" lean-forward="false" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
-          <folding>
-            <element signature="e#19#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -409,13 +409,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="44" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py" />
     <entry file="file://$PROJECT_DIR$/first_try" />
     <entry file="file://$PROJECT_DIR$/Given/mask_to_submission.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -428,9 +422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-          <folding>
-            <element signature="e#19#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -501,25 +492,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Given/mask_to_submission.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="42" column="140" lean-forward="false" selection-start-line="42" selection-start-column="140" selection-end-line="42" selection-end-column="140" />
+        <state relative-caret-position="0">
+          <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/matplotlib/cm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="81" column="18" lean-forward="false" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/matplotlib/_cm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/matplotlib/cm.py" />
+    <entry file="file://$USER_HOME$/Anaconda/Lib/site-packages/matplotlib/_cm.py" />
     <entry file="file://$PROJECT_DIR$/Given/submission_to_mask.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -527,10 +509,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py">
+    <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py" />
+    <entry file="file://$PROJECT_DIR$/Given/given.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="44" selection-end-column="67" />
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -554,16 +537,26 @@
     <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_2.png" />
     <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_1.png" />
     <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_3.png" />
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Run/runKmeans.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="13" selection-end-column="59" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/Given/tf_aerial_images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3261">
+          <caret line="293" column="37" lean-forward="true" selection-start-line="293" selection-start-column="37" selection-end-line="293" selection-end-column="37" />
+          <folding>
+            <element signature="e#206#217#0" expanded="false" />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Given/given.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -571,11 +564,19 @@
           <folding>
             <element signature="e#19#51#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/Run/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Given/tf_aerial_images.py">
+    <entry file="file://$PROJECT_DIR$/neural_taken.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-272">
           <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
@@ -591,15 +592,25 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="285">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Run/runNN.py">
+    <entry file="file://$PROJECT_DIR$/Helpers/helpers.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="200">
           <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+=======
+        <state relative-caret-position="135">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+>>>>>>> 3aa21809e25f327931a1d9cad214943f80d0530a
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
