@@ -4,17 +4,17 @@ import os
 from Given import given
 
 
-def load_training_data(datapath):
+def load_training_data(datapath, number_of_images):
     # Load all images
     image_dir = datapath + "images/"
     files = os.listdir(image_dir)
-    print("Loading " + str(len(files)) + " images")
-    imgs = [given.load_image(image_dir + files[i]) for i in range(len(files))]
+    print("Loading " + str(number_of_images) + " images")
+    imgs = [given.load_image(image_dir + files[i]) for i in range(number_of_images)]
 
     # Load all groundtruth images
     gt_dir = datapath + "groundtruth/"
     print("Loading " + str(len(files)) + " groundtruth images")
-    gt_imgs = [given.load_image(gt_dir + files[i]) for i in range(len(files))]
+    gt_imgs = [given.load_image(gt_dir + files[i]) for i in range(number_of_images)]
 
     return imgs, gt_imgs
 
@@ -23,10 +23,10 @@ def sort_key(s):
     s, n = s.split('_')
     return s, int(n)
 
-def load_test_data(datapath):
+def load_test_data(datapath, number_of_images):
     image_dir_test = datapath
     files = os.listdir(image_dir_test)
-    print("Loading " + str(len(files)) + " images")
+    print("Loading " + str(number_of_images) + " images")
     files.sort(key=sort_key)
 
     folder = []

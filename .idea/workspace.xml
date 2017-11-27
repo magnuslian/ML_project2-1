@@ -2,209 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78e7369f-9d15-4373-90b6-726eb4953e26" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_10.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_11.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_12.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_13.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_14.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_15.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_17.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_18.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_19.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_20.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_21.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_22.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_23.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_25.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_26.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_27.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_28.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_29.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_31.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_33.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_34.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_35.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_36.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_37.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_38.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_39.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_41.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_42.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_43.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_44.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_45.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_46.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_47.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_49.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_51.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_52.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_53.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_54.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_55.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_56.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_57.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_58.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_59.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_60.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_61.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_62.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_63.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_64.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_65.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_66.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_67.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_68.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_69.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_70.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_71.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_72.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_73.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_74.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_75.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_76.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_77.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_78.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_79.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_80.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_81.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_82.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_83.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_84.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_85.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_86.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_87.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_88.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_89.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_90.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_91.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_92.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_93.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_94.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_95.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_96.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_97.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_98.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/overlay_99.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_10.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_11.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_12.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_13.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_14.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_15.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_17.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_18.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_19.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_20.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_21.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_22.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_23.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_25.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_26.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_27.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_28.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_29.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_31.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_33.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_34.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_35.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_36.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_37.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_38.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_39.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_41.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_42.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_43.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_44.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_45.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_46.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_47.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_49.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_51.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_52.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_53.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_54.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_55.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_56.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_57.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_58.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_59.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_60.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_61.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_62.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_63.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_64.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_65.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_66.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_67.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_68.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_69.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_70.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_71.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_72.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_73.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_74.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_75.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_76.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_77.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_78.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_79.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_80.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_81.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_82.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_83.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_84.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_85.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_86.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_87.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_88.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_89.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_90.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_91.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_92.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_93.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_94.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_95.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_96.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_97.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_98.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Given/predictions_training/prediction_99.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Run/runNN.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Run/run.py" afterPath="$PROJECT_DIR$/Run/runKmeans.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Given/tf_aerial_images.py" afterPath="$PROJECT_DIR$/Given/tf_aerial_images.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Run/run.py" afterPath="$PROJECT_DIR$/Run/run.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -222,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Run/run.py">
+      <file leaf-file-name="runKmeans.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Run/runKmeans.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="10" column="71" lean-forward="false" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
+            <state relative-caret-position="102">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="13" selection-end-column="59" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -234,13 +34,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tf_aerial_images.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tf_aerial_images.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Given/tf_aerial_images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3850">
-              <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="374">
+              <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="14" />
               <folding>
                 <element signature="e#206#217#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helpers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Helpers/helpers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1112">
+              <caret line="93" column="31" lean-forward="false" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="runNN.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Run/runNN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -261,6 +83,8 @@
       <find>FLAGS</find>
       <find>model</find>
       <find>conv1_weights</find>
+      <find>max</find>
+      <find>weig</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -278,6 +102,7 @@
         <option value="$PROJECT_DIR$/Helpers/helpers.py" />
         <option value="$PROJECT_DIR$/Given/tf_aerial_images.py" />
         <option value="$PROJECT_DIR$/Run/run.py" />
+        <option value="$PROJECT_DIR$/Run/runNN.py" />
       </list>
     </option>
   </component>
@@ -310,7 +135,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,7 +162,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -397,7 +222,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ML_project2-1" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Run/run.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\magnu\Documents\NTNU\3 (Utveksling EPFL)\Machine Learning\Prosjekt2\ML_project2-1\Run\runKmeans.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -415,7 +240,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ML_project2-1" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\magnu\Documents\NTNU\3 (Utveksling EPFL)\Machine Learning\Prosjekt2\ML_project2-1\Run\run.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\magnu\Documents\NTNU\3 (Utveksling EPFL)\Machine Learning\Prosjekt2\ML_project2-1\Run\runKmeans.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -488,8 +313,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20861678" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21164021" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -497,7 +323,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -521,13 +347,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Given/submission_to_mask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Prosjekt1/Machine-Learning-Project1/HelpMethods/given.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -543,11 +362,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Run/run.py">
+    <entry file="file://$PROJECT_DIR$/Run/runKmeans.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
           <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -555,7 +376,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1887">
           <caret line="116" column="32" lean-forward="false" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="e#19#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -585,7 +408,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-          <folding />
+          <folding>
+            <element signature="e#19#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,14 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Given/given.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/first_try" />
     <entry file="file://$PROJECT_DIR$/Given/segment_aerial_images.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -705,92 +522,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Helpers/helpers.py">
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/overlay_2.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/overlay_1.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_4.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_5.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_6.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_7.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_8.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_9.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_10.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_2.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_1.png" />
+    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_3.png" />
+    <entry file="file://$PROJECT_DIR$/Given/given.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="93" column="31" lean-forward="false" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+        <state relative-caret-position="595">
+          <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
           <folding>
-            <element signature="e#0#18#0" expanded="false" />
+            <element signature="e#19#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/overlay_2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/overlay_1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_4.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_5.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_6.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_7.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_8.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_9.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_10.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Given/predictions_training/prediction_3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Run/run.py">
+    <entry file="file://$PROJECT_DIR$/Helpers/helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="10" column="71" lean-forward="false" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
+        <state relative-caret-position="1112">
+          <caret line="93" column="31" lean-forward="false" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Given/tf_aerial_images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="14" />
+          <folding>
+            <element signature="e#206#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Run/runKmeans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="13" selection-end-column="59" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Given/tf_aerial_images.py">
+    <entry file="file://$PROJECT_DIR$/Run/runNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3850">
-          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        <state relative-caret-position="211">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="e#206#217#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
