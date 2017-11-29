@@ -158,7 +158,20 @@ def create_patches_and_arrays(imgs, FOREGROUND_THRESHOLD, gt_imgs=[]):
     return x
 
 
-def create_submission_from_prediction(pred):
+def calculate_score(pred, sol):
+    if len(pred) != len(sol):
+        raise ValueError("The length of the prediction does not match the length of the solution")
+
+    sum = 0
+    for i in range(len(pred)):
+        if pred[i] == sol[i]:
+            sum += 1
+    score = round(sum/len(pred) * 100,2)
+    print("Accuracy: " + score + "%")
+    return score
+
+
+def create_submission_format():
     submission = []
     con = 0
     for im in range(1, 51):
@@ -178,3 +191,12 @@ def true_positive_rate(pred,y):
     TPR = (len(list(set(yn) & set(zn))) / float(len(pred))) * 100
     TPR_round = round(TPR, 2)
     return (str(TPR_round) + " %")
+
+def make_pred(pred):
+    out = []
+    for p in pred:
+        if p[0] <= 0.25:
+            out.append(0)
+        else:
+            out.append(1)
+    return out
