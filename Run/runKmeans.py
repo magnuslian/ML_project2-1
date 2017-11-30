@@ -21,7 +21,7 @@ pred = kmeans.predict(X_test)
 
 
 
-submission = helpers.create_submission_from_prediction(pred)
+submission = helpers.create_submission_format()
 
 print("True positive rate: " + helpers.true_positive_rate(pred,Y_train))
 

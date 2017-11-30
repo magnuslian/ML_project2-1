@@ -71,9 +71,9 @@ def extract_img_features(filename, patch_size):
 def value_to_class(v, foreground_threshold):
     df = np.sum(v)
     if df > foreground_threshold:
-        return [1,0]
+        return 1
     else:
-        return [0,1]
+        return 0
 
 
 # Convert array of labels to an image
