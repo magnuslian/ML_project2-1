@@ -68,7 +68,7 @@ model.add(Dropout(0.25))
 model.add(Flatten())
 model.add(Dense(16, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(1, activation='softmax'))
+model.add(Dense(2, activation='softmax'))
 
 adam = Adam(lr=0.001, beta_1=0.7,epsilon=1e-8,decay=0)
 model.compile(loss='categorical_crossentropy', optimizer=adam)
