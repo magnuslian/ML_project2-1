@@ -73,10 +73,10 @@ model.add(Dense(2, activation='softmax'))
 adam = Adam(lr=0.001, beta_1=0.7,epsilon=1e-8,decay=0)
 model.compile(loss='categorical_crossentropy', optimizer=adam)
 
-model.fit(x_train,y_train,epochs=50,batch_size=32)
+model.fit(x_train,y_train,epochs=100,batch_size=32)
 pred = model.predict(x_test)
 
 
 pred1 = helpers.make_pred(pred)
 submission = helpers.create_submission_format()
-given.create_csv_submission(submission, pred1, "epoch=50.csv")
+given.create_csv_submission(submission, pred1, "epoch=100.csv")

@@ -1,12 +1,16 @@
 #!/usr/bin/python
-import os
-import sys
 from PIL import Image
 import math
-import matplotlib.image as mpimg
 import numpy as np
 
-label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\nn_adam.csv'
+from Helpers import helpers
+from Given import given
+import matplotlib.pyplot as plt
+
+label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\epoch=100.csv'
+test_imgs =  "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
+
+imgs = helpers.load_test_data(test_imgs,50)
 
 h = 16
 w = h
@@ -47,7 +51,10 @@ def reconstruct_from_labels(image_id):
 
         im[j:je, i:ie] = binary_to_uint8(adata)
 
-    Image.fromarray(im).save('prediction_' + '%.3d' % image_id + '.png')
+    cimg = given.concatenate_images(imgs[image_id-1], im)
+    fig1 = plt.figure(figsize=(10, 10))  # create a figure with the default size
+
+    Image.fromarray(cimg).save('prediction_' + '%.3d' % image_id + '.png')
 
     return im
 
