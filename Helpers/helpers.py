@@ -11,10 +11,10 @@ IMG_PATCH_SIZE = 16
 FOREGROUND_THRESHOLD = 0.25
 
 def normalize(data, size, mean = True, std = True):
-    data = np.reshape(data, (data.shape[0] * size * size, 3))
+    data1 = np.reshape(data, (data.shape[0] * size * size, 3))
     scaler = preprocessing.StandardScaler(copy=True, with_mean=mean, with_std=std)
-    scaler.fit(data)
-    new_data=scaler.fit_transform(data, y=None)
+    scaler.fit(data1)
+    new_data=scaler.fit_transform(data1, y=None)
     out_data = np.reshape(new_data, (data.shape[0], size, size, 3))
     return out_data
 
@@ -23,12 +23,12 @@ def load_training_data(datapath, number_of_images):
     image_dir = datapath + "images/"
     files = os.listdir(image_dir)
     print("Loading " + str(number_of_images) + " images")
-    imgs = [given.load_image(image_dir + files[i]) for i in range(number_of_images)]
+    imgs = np.asarray([given.load_image(image_dir + files[i]) for i in range(number_of_images)])
 
     # Load all groundtruth images
     gt_dir = datapath + "groundtruth/"
-    print("Loading " + str(len(files)) + " groundtruth images")
-    gt_imgs = [given.load_image(gt_dir + files[i]) for i in range(number_of_images)]
+    print("Loading " + str(number_of_images) + " groundtruth images")
+    gt_imgs = np.asarray([given.load_image(gt_dir + files[i]) for i in range(number_of_images)])
 
     return imgs, gt_imgs
 
