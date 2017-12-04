@@ -45,7 +45,7 @@ def load_test_data(datapath, number_of_images):
 
     imgs_test = [given.load_image(folder[i]) for i in range(len(folder))]
 
-    return imgs_test
+    return np.asarray(imgs_test)
 
 def sort_key(s):
     s, n = s.split('_')

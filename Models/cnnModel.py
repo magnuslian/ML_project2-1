@@ -23,6 +23,8 @@ BATCH_SIZE = 200
 EPOCHS = 200
 FOREGROUND_THRESHOLD = 0.25
 
+FILEPATH_SAVE_WEIGHTS = 2 #Put a string here
+
 
 class CnnModel:
 
@@ -150,10 +152,12 @@ class CnnModel:
         print("Training done.")
 
         if save_weights:
-            self.model.save_weights(
-                "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Saved_Weights\\weights.h5",
-                overwrite=False)
+            #try:
+            self.model.save_weights(FILEPATH_SAVE_WEIGHTS, overwrite=False)
             print("Model saved.")
+
+    def load(self, filename):
+        self.model.load_weights(filename)
 
     def prediction(self, x):
         # Make prediction and submission file
