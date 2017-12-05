@@ -10,12 +10,12 @@ from PIL import Image
 IMG_PATCH_SIZE = 16
 FOREGROUND_THRESHOLD = 0.25
 
-def normalize(data, size, mean = True, std = True):
-    data1 = np.reshape(data, (data.shape[0] * size * size, 3))
+def normalize(data, patch_size, mean = True, std = True):
+    data1 = np.reshape(data, (data.shape[0] * patch_size * patch_size, 3))
     scaler = preprocessing.StandardScaler(copy=True, with_mean=mean, with_std=std)
     scaler.fit(data1)
     new_data=scaler.fit_transform(data1, y=None)
-    out_data = np.reshape(new_data, (data.shape[0], size, size, 3))
+    out_data = np.reshape(new_data, (data.shape[0], patch_size, patch_size, 3))
     return out_data
 
 def load_training_data(datapath, number_of_images):

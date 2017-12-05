@@ -12,7 +12,7 @@ from keras.callbacks import ReduceLROnPlateau, EarlyStopping, History
 from skimage import exposure
 
 from Helpers import helpers
-from Given import given
+from Given import given, proHelpers
 
 PATCH_SIZE = 16
 WINDOW_SIZE = 32
@@ -29,6 +29,9 @@ FILEPATH_SAVE_WEIGHTS = 2 #Put a string here
 class CnnModel:
 
     def __init__(self):
+        self.patch_size = PATCH_SIZE
+        self.window_size = WINDOW_SIZE
+        self.padding = (self.window_size - self.patch_size) // 2
         self.initialize()
 
 
@@ -169,3 +172,25 @@ class CnnModel:
         pred1 = helpers.make_pred(pred)
         submission = helpers.create_submission_format()
         given.create_csv_submission(submission, pred1, "new_model_setup.csv")
+
+    #THE PROS
+    def classify(self, X):
+        """
+        Classify an unseen set of samples.
+        This method must be called after "train".
+        Returns a list of predictions.
+        """
+
+        # Subdivide the images into blocks.
+        # img_patches has shape (1444, 32, 32, 3)
+        img_patches = proHelpers.create_patches(X, self.patch_size, 16, self.padding)
+
+        # Run prediction
+        Z = self.model.predict(img_patches)
+        # Z has shape (1444, 2)
+
+        Z = (Z[:, 0] < Z[:, 1]) * 1 # converts true to 1 and false to 0.
+        # Z is an array of 1444
+
+        # Regroup patches into images
+        return proHelpers.group_patches(Z, X.shape[0]) #Shape of X is (1,608,608,3)
