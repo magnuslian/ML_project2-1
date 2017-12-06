@@ -7,13 +7,13 @@ from Helpers import helpers
 from Given import given
 import matplotlib.pyplot as plt
 
-label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\epoch=100med8gangerTrening.csv'
+label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\epoch=100.csv'
 test_imgs =  "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
-imgs = helpers.load_test_data(test_imgs,50)
+imgs = helpers.load_test_data(test_imgs,1)
 
 h = 16
-w = h
+w = 16
 imgwidth = int(math.ceil((600.0 / w)) * w)
 imgheight = int(math.ceil((600.0 / h)) * h)
 nc = 3
@@ -52,12 +52,15 @@ def reconstruct_from_labels(image_id):
         im[j:je, i:ie] = binary_to_uint8(adata)
 
     cimg = given.concatenate_images(imgs[image_id-1], im)
-    fig1 = plt.figure(figsize=(10, 10))  # create a figure with the default size
+
+    #overlay_img = given.make_img_overlay(imgs[image_id-1], im)
+    #cimg2 = given.concatenate_images(cimg,overlay_img)
+    #fig1 = plt.figure(figsize=(10, 10))  # create a figure with the default size
 
     Image.fromarray(cimg).save('prediction_' + '%.3d' % image_id + '.png')
 
     return im
 
 
-for i in range(1, 51):
+for i in range(1,2):
     reconstruct_from_labels(i)

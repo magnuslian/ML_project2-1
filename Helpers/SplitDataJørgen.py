@@ -1,4 +1,5 @@
-import numpy as np
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
@@ -67,7 +68,6 @@ def create_model(neuron, reg, leakyRelu, alpha):
         model.add(Dense(2, activation='softmax', kernel_regularizer=l2(reg)))
 
     adam = Adam(lr= 0.001)
-    print("Compiling model......")
     model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
     return model
 
@@ -85,9 +85,14 @@ def find_best_hp(neurons, regs, leakyRelu, alphas):
         for reg in regs:
             for alpha in alphas:
                 for neuron in neurons:
-                    print("Fitting......")
+                    print("\nLEAKY?: ", leaky,
+                          "\nREG: ", reg,
+                          "\nALPHA:", alpha,
+                          "\nNEURON: ", neuron)
+
                     model = create_model(neuron, reg, leaky, alpha)
-                    history = model.fit(x_train, y_train, epochs=25, batch_size=32, verbose=2, validation_split = 0.2)
+                    history = model.fit(x_train, y_train, epochs=5, batch_size=32, verbose=2, validation_split = 0.2)
+
                     """
                     # summarize history for accuracy
                     plt.plot(history.history['acc'])
@@ -97,7 +102,7 @@ def find_best_hp(neurons, regs, leakyRelu, alphas):
                     plt.xlabel('epoch')
                     plt.legend(['train', 'test'], loc='upper left')
                     plt.show()
-                    """
+
                     # summarize history for loss
                     plt.plot(history.history['loss'])
                     plt.plot(history.history['val_loss'])
@@ -106,6 +111,7 @@ def find_best_hp(neurons, regs, leakyRelu, alphas):
                     plt.xlabel('epoch')
                     plt.legend(['train', 'test'], loc='upper left')
                     plt.show(block=False)
+                    """
 
                     validation_losses = history.history['val_loss']
                     val_loss = min(validation_losses)
