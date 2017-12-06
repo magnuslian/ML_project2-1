@@ -113,3 +113,73 @@ def make_pred(pred):
         else:
             out.append(1)
     return out
+
+def filterh(images, fwide=10, ratioroad=0.79, ratiobackground=0.31):
+    wide = np.array((0, 8, 17, 26))
+    hight = images[0].shape[1]
+
+    for nimage in range(images.shape[0]):
+        image = images[nimage]
+        for iw in wide:
+            isroad = False
+            for ih in range(hight-5):
+                ground1 = image[iw:iw + fwide, ih:ih + 2]
+                road = image[iw:iw + fwide, ih + 2:ih + 3]
+                ground2 = image[iw:iw + fwide, ih + 3:ih + 5]
+                mg1 = np.mean(ground1)
+                mroad = np.mean(road)
+                mg2 = np.mean(ground2)
+                if not isroad:
+                    if mg1 < ratiobackground and mroad > ratioroad:
+
+                        start = False
+                        # Change road to 1
+                        for npixel in range(len(road)):
+                            pixel = road[npixel]
+                            if pixel == 1:
+                                start = True
+                            else:
+                                try:
+                                    final = road[npixel + 1]
+                                except:
+                                    final = road[-1]
+                                if start and final == 1:
+                                    road[npixel] = 1
+                        # Change background
+                        for n2pixel in range(ground1.shape[1]):
+                            start = False
+                            for n1pixel in range(ground1.shape[0]):
+                                pixel = ground1[n1pixel, n2pixel]
+                                if pixel == 0:
+                                    start = True
+                                else:
+                                    try:
+                                        final = np.mean(ground1[n1pixel+1:, n2pixel])
+                                    except:
+                                        final = ground1[-1, n2pixel]
+                                    if start and final < 1:
+                                        ground1[n1pixel, n2pixel] = 0
+                    isroad = True
+                else:
+                    if mg1 > ratiobackground and mroad > ratioroad:
+                        start = False
+                        # Change road to 1
+                        for npixel in range(len(road)):
+                            pixel = road[npixel]
+                            if pixel == 1:
+                                start = True
+                            else:
+                                try:
+                                    final = road[npixel + 1]
+                                except:
+                                    final = road[-1]
+                                if start and final == 1:
+                                    road[npixel] = 1
+                    else:
+                        isroad = False
+                # Save in image
+                image[iw:iw + fwide, ih:ih + 2] = ground1
+                image[iw:iw + fwide, ih + 2:ih + 3] = road
+        images[nimage] = image
+
+    return images

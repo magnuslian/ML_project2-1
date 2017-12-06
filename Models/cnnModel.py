@@ -168,10 +168,19 @@ class CnnModel:
 
         print("Predicting...")
         pred = self.model.predict(test_image_patches)
-
+        """
         pred1 = helpers.make_pred(pred)
         submission = helpers.create_submission_format()
-        given.create_csv_submission(submission, pred1, "new_model_setup.csv")
+        given.create_csv_submission(submission, pred1, "new_model_setup.csv")"""
+
+
+        pred1 = helpers.make_pred(pred)
+        pred2 = np.reshape(pred1, (50, 38, 38))
+        pred3 = helpers.filterh(pred2)
+        pred4 = np.reshape(pred3, (72200, 1))
+        submission = helpers.create_submission_format()
+        given.create_csv_submission(submission, pred4, "cleaned .csv")
+
 
     #THE PROS
     def classify(self, X):

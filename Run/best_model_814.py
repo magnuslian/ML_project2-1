@@ -96,7 +96,6 @@ stop_callback = EarlyStopping(monitor='acc',
                           verbose=1,
                           mode='auto')
 
-
 model = Sequential()
 # input: 100x100 images with 3 channels -> (100, 100, 3) tensors.
 # this applies 32 convolution filters of size 3x3 each.
