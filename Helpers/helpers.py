@@ -5,6 +5,7 @@ import os
 from Given import given
 from sklearn import preprocessing
 from PIL import Image
+from skimage.exposure import rescale_intensity
 
 
 IMG_PATCH_SIZE = 16
@@ -183,3 +184,45 @@ def filterh(images, fwide=10, ratioroad=0.79, ratiobackground=0.31):
         images[nimage] = image
 
     return images
+
+
+def increase_training_set(x_train, y_train, NUM_OF_IMGS_CREATED_PER_IMGS, WINDOW_SIZE):
+    # Building a bigger data set by manipulating the training data
+    x_ptrain = np.empty((x_train.shape[0] * NUM_OF_IMGS_CREATED_PER_IMGS, WINDOW_SIZE, WINDOW_SIZE, 3))
+    y_ptrain = np.empty((y_train.shape[0] * NUM_OF_IMGS_CREATED_PER_IMGS, 2))
+
+    for iter in range(0, NUM_OF_IMGS_CREATED_PER_IMGS):
+        # Create e.g 8 versions of each patch
+        for patch in range(x_train.shape[0]):
+            subimage_x = x_train[patch]
+            subimage_y = y_train[patch]
+
+            # IMAGE AUGMENTATION
+            """
+                Assuming that we want to create 8 new patches per patch, 
+                we have a 38.6% chance of getting 8 unique patches. 
+            """
+
+            # Contrast stretching
+            if np.random.randint(2) == 0:
+                subimage_x = rescale_intensity(subimage_x)
+
+            # Random flip vertically
+            if np.random.randint(2) == 0:
+                subimage_x = np.flipud(subimage_x)
+
+            # Random flip horizontally
+            if np.random.randint(2) == 0:
+                subimage_x = np.fliplr(subimage_x)
+
+            # Random rotation in steps of 90°
+            num_rot = np.random.randint(4)
+            subimage_x = np.rot90(subimage_x, num_rot)
+
+            # subimage_y has shape (16,16)
+            # subimage_y = given.value_to_class(np.mean(subimage_x), FOREGROUND_THRESHOLD)
+            # subimage_y has shape [1,0] or [0,1]
+            x_ptrain[patch * NUM_OF_IMGS_CREATED_PER_IMGS + iter] = subimage_x
+            y_ptrain[patch * NUM_OF_IMGS_CREATED_PER_IMGS + iter] = subimage_y
+        print("Done creating version ", iter + 1, " of the patches")
+    return x_ptrain, y_ptrain

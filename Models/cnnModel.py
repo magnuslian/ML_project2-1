@@ -26,15 +26,6 @@ FOREGROUND_THRESHOLD = 0.25
 FILEPATH_SAVE_WEIGHTS = 2 #Put a string here
 
 
-class CnnModel:
-
-    def __init__(self):
-        self.patch_size = PATCH_SIZE
-        self.window_size = WINDOW_SIZE
-        self.padding = (self.window_size - self.patch_size) // 2
-        self.initialize()
-
-
     def initialize(self):
         #reg_factor = 1e-6 #L2 reg-factor
 
