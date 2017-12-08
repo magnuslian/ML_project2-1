@@ -200,9 +200,9 @@ def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img
             height = x_train[pic].shape[1]
 
             # Random window from the image
-            randomw = np.random.randint(0, width - window_size + 2) # +2 includes one below (400 - 20 + 2 =) 382
+            randomw = np.random.randint(0, width - window_size + 1) # +2 includes one below (400 - 20 + 2 =) 382
             # This is a random number which decides the starting column (leftmost)
-            randomh = np.random.randint(0, height - window_size + 2)
+            randomh = np.random.randint(0, height - window_size + 1)
             # This is a random number which decides the starting row (lowermost)
             subimage_x = x_train[pic][randomw:randomw + window_size, randomh:randomh + window_size]
             # Shape is (window_size, window_size, 3)
@@ -239,6 +239,7 @@ def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img
             # subimage_y has shape [1,0] or [0,1]
             x_ptrain[pic*num_patches_per_img + iter] = subimage_x
             y_ptrain[pic*num_patches_per_img + iter] = subimage_y
+        print("Finished processing ", pic + 1)
 
     return x_ptrain, y_ptrain
 

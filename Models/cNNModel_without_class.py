@@ -20,13 +20,13 @@ POOL_SIZE = (2,2)
 FOREGROUND_THRESHOLD = 0.25
 
 
-FILEPATH_SAVE_WEIGHTS = 2 #Put a string here
+FILEPATH_SAVE_WEIGHTS = 'weights_win20.h5'
 
 
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
-NUM_TRAIN_IMAGES = 100
+NUM_TRAIN_IMAGES = 10
 NUM_TEST_IMAGES = 50
 
 PATCHES_PER_IMG = round((400/WINDOW_SIZE)**2)
@@ -36,12 +36,10 @@ PATCHES_PER_IMG = round((400/WINDOW_SIZE)**2)
 #Load training data
 x_train, y_train = helpers.load_training_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
 
-#Creating patches of wished window size
-#x_train, y_train = helpers.create_patches(x_train, FOREGROUND_THRESHOLD, WINDOW_SIZE, y_train)
-
 #Normalizing the training data
-x_train = helpers.normalize(x_train, WINDOW_SIZE, std=False)
+x_train = helpers.normalize(x_train, 400, std=False)
 
+#Create patches of size window_size from the training data
 x_train, y_train = helpers.create_random_patches_of_training_data(x_train,y_train, PATCHES_PER_IMG, FOREGROUND_THRESHOLD, WINDOW_SIZE)
 
 lr_callback = ReduceLROnPlateau(monitor='acc',
@@ -80,17 +78,16 @@ model.add(Dropout(0.5))
 model.add(Dense(2, activation='softmax'))
 
 adam = Adam(lr= 0.001)
-print("Compiling model......")
 model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
 
+print("\nTraining data with size: ", x_train.shape)
+print("The size of the y-data: ", y_train.shape, "\n")
+model.fit(x_train, y_train, epochs=1, batch_size=32, verbose=2, callbacks=[lr_callback,stop_callback])
+print("\nDone training.\n")
+#model.summary()
 
-print("FITTING......")
-model.fit(x_train, y_train, epochs=10, batch_size=32, verbose=2, callbacks=[lr_callback,stop_callback])
-
-model.summary()
-
-#model.save_weights(FILEPATH_SAVE_WEIGHTS, overwrite=False)
-#print("Weights are saved.")
+model.save_weights(FILEPATH_SAVE_WEIGHTS, overwrite=False)
+print("Weights are saved.\n")
 
 imgs = helpers.load_test_data(DATAPATH_TESTING, NUM_TEST_IMAGES)
 
@@ -99,17 +96,3 @@ x_test = helpers.normalize(imgs, 608, std=False)
 pred = proHelpers.classify(model, x_test)
 submission = helpers.create_submission_format()
 given.create_csv_submission(submission,pred,"window20.csv")
-
-
-"""
-submission_filename = 'window20.csv'
-image_filenames = []
-root = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\test_set_images\\"
-
-
-for i in range(1, 51):
-    image_filename = root + '/test_' + str(i) + '/test_' + str(i) + '.png'
-    image_filenames.append(image_filename)
-
-proHelpers.generate_submission(model, submission_filename, *image_filenames)
-"""

@@ -109,11 +109,12 @@ def classify(model, X):
     """
     # SHAPE OF X: (1,608,608,3)
     # Subdivide the images into blocks.
+    print("Creating patches...")
     img_patches = create_patches(X, 16, 16, 2) #Shape here is (1444, 20, 20, 3)
 
     # Run prediction
+    print("Predicting...")
     Z = model.predict(img_patches)
-    print(Z)
     Z = helpers.make_pred(Z)
 
     return Z  # Shape of X is (1,608,608,3)

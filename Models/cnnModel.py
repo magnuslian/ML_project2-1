@@ -171,6 +171,5 @@ FILEPATH_SAVE_WEIGHTS = 2 #Put a string here
         pred4 = np.reshape(pred3, (72200, 1))
         submission = helpers.create_submission_format()
         given.create_csv_submission(submission, pred4, "cleaned .csv")
-        return pred4
 
 
