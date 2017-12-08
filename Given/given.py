@@ -45,6 +45,29 @@ def img_crop(im, w, h):
             list_patches.append(im_patch)
     return list_patches
 
+#Try with padding and stride
+def img_crop2(im, w, h, stride, padding):
+    #Crop images so that they work with padding
+    list_patches = []
+    imgwidth = im.shape[0]
+    imgheight = im.shape[1]
+    is_3d = len(im.shape) == 3
+    if is_3d: #Normal images
+        print("Går inn her, normalbilde")
+        im = np.lib.pad(im, ((padding, padding), (padding, padding), (0, 0)), 'reflect')
+        for i in range(padding, imgheight + padding, stride):
+            for j in range(padding, imgwidth + padding, stride):
+                im_patch = im[j - padding:j + w + padding, i - padding:i + h + padding, :]
+                print(im_patch.shape)
+                list_patches.append(im_patch)
+    else: #Ground truth
+        print("Går inn her, GT")
+        for i in range(0, imgheight, h):
+            for j in range(0, imgwidth, w):
+                im_patch = im[j:j + w, i:i + h]
+                list_patches.append(im_patch)
+    return list_patches
+
 
 def value_to_class(v, foreground_threshold):
     # percentage of pixels > 1 required to assign a foreground label to a patch

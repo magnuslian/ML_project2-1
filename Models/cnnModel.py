@@ -171,26 +171,6 @@ FILEPATH_SAVE_WEIGHTS = 2 #Put a string here
         pred4 = np.reshape(pred3, (72200, 1))
         submission = helpers.create_submission_format()
         given.create_csv_submission(submission, pred4, "cleaned .csv")
+        return pred4
 
 
-    #THE PROS
-    def classify(self, X):
-        """
-        Classify an unseen set of samples.
-        This method must be called after "train".
-        Returns a list of predictions.
-        """
-
-        # Subdivide the images into blocks.
-        # img_patches has shape (1444, 32, 32, 3)
-        img_patches = proHelpers.create_patches(X, self.patch_size, 16, self.padding)
-
-        # Run prediction
-        Z = self.model.predict(img_patches)
-        # Z has shape (1444, 2)
-
-        Z = (Z[:, 0] < Z[:, 1]) * 1 # converts true to 1 and false to 0.
-        # Z is an array of 1444
-
-        # Regroup patches into images
-        return proHelpers.group_patches(Z, X.shape[0]) #Shape of X is (1,608,608,3)

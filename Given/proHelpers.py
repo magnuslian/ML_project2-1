@@ -2,10 +2,7 @@
 
 import matplotlib.image as mpimg
 import numpy as np
-import matplotlib.pyplot as plt
-import os, sys
-from PIL import Image
-import re
+from Helpers import helpers
 
 
 def load_image(infilename):
@@ -77,15 +74,15 @@ def extract_img_features(filename, stride, patch_size, padding):
     X = np.asarray([img_patches[i] for i in range(len(img_patches))])
     return X
 
-
+#BØR PRØVE Å MEKKE DETTE SELV
 def mask_to_submission_strings(model, image_filename, index):
     """ Reads a single image and outputs the strings that should go into the submission file. """
     #img_number = int(re.search(r"\d+", image_filename).group(0))
     Xi = load_image(image_filename)
     Xi = Xi.reshape(1, Xi.shape[0], Xi.shape[1], Xi.shape[2])
-    Zi = model.classify(Xi)
-    # Zi is one number here
-    Zi = Zi.reshape(-1)
+    Zi = classify(model, Xi)
+    print(Zi)
+    print(len(Zi))
     patch_size = 16
     nb = 0
     print("Processing " + image_filename)
@@ -95,10 +92,28 @@ def mask_to_submission_strings(model, image_filename, index):
             nb += 1
             yield ("{:03d}_{}_{},{}".format(index, j, i, label))
 
-
+#BØR PRØVE Å MEKKE DETTE SELV
 def generate_submission(model, submission_filename, *image_filenames):
     """ Generate a .csv containing the classification of the test set. """
     with open(submission_filename, 'w') as f:
         f.write('id,prediction\n')
         for i, fn in enumerate(image_filenames[0:]):
             f.writelines('{}\n'.format(s) for s in mask_to_submission_strings(model, fn, i+1))
+
+# THE PROS
+def classify(model, X):
+    """
+    Classify an unseen set of samples.
+    This method must be called after "train".
+    Returns a list of predictions.
+    """
+    # SHAPE OF X: (1,608,608,3)
+    # Subdivide the images into blocks.
+    img_patches = create_patches(X, 16, 16, 2) #Shape here is (1444, 20, 20, 3)
+
+    # Run prediction
+    Z = model.predict(img_patches)
+    print(Z)
+    Z = helpers.make_pred(Z)
+
+    return Z  # Shape of X is (1,608,608,3)
