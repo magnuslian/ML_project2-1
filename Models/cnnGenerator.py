@@ -1,11 +1,13 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+import numpy as np
 
 from keras.models import Sequential, load_model, save_model
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.optimizers import Adam
+from skimage.exposure import rescale_intensity
 
 from Helpers import helpers
 from Given import given, proHelpers
@@ -15,20 +17,17 @@ PATCH_SIZE = 16
 WINDOW_SIZE = 24
 PADDING = (WINDOW_SIZE - PATCH_SIZE) // 2
 POOL_SIZE = (2,2)
-FOREGROUND_THRESHOLD = 0.25
 NEURONS = 32
-
+BATCH_SIZE = 125
 
 FILEPATH_SAVE_WEIGHTS = 'weights_win24.h5'
 
-
+# EDIT THESE THREE PATHS BEFORE RUNNING
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
 NUM_TRAIN_IMAGES = 100
 NUM_TEST_IMAGES = 50
-
-PATCHES_PER_IMG = 625
 
 #Load training data
 imgs, gt_imgs = helpers.load_training_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
@@ -80,19 +79,64 @@ def create_model():
 def train():
     model = create_model()
 
-    # Create patches of size window_size from the training data
-    x_train, y_train = helpers.create_random_patches_of_training_data(imgs_normal, gt_imgs,
-                                                                      PATCHES_PER_IMG,
-                                                                      FOREGROUND_THRESHOLD,
-                                                                      WINDOW_SIZE)
-    print("\nTraining data with size: ", x_train.shape)
-    print("The size of the y-data: ", y_train.shape, "\n")
+    def generate_minibatch():
+        # Loop for ever
+        while True:
+            # Create one batch of training data
+            x_batch = np.empty((BATCH_SIZE, WINDOW_SIZE, WINDOW_SIZE, 3))
+            y_batch = np.empty((BATCH_SIZE, 2))
+
+            for iter in range(0, BATCH_SIZE):
+                #Choose random image
+                index = np.random.randint(0,imgs_normal.shape[0])
+
+                width = imgs_normal[index].shape[0]
+                height = imgs_normal[index].shape[1]
+
+                # Random window from the image
+                randomw = np.random.randint(0, width - WINDOW_SIZE + 1)  # +1 includes one below (400 - 20 + 1 =) 381
+                # randomw is a random number which decides the starting column (leftmost)
+                randomh = np.random.randint(0, height - WINDOW_SIZE + 1)
+                # randomh is a random number which decides the starting row (uppermost)
+                window_x = imgs_normal[index][randomw:randomw + WINDOW_SIZE, randomh:randomh + WINDOW_SIZE]
+                window_y = imgs_normal[index][randomw:randomw + WINDOW_SIZE, randomh:randomh + WINDOW_SIZE]
+
+                # subimage_y is independent of the image augmentation of subimage_x
+                window_y = given.value_to_class(np.mean(window_y))
+
+                # IMAGE AUGMENTATION
+
+                # Contrast stretching
+                if np.random.randint(2) == 0:
+                    subimage_x = rescale_intensity(window_x)
+
+                # Random flip vertically
+                if np.random.randint(2) == 0:
+                    subimage_x = np.flipud(window_x)
+
+                # Random flip horizontally
+                if np.random.randint(2) == 0:
+                    subimage_x = np.fliplr(window_x)
+
+                # Random rotation in steps of 90°
+                num_rot = np.random.randint(4)
+                subimage_x = np.rot90(window_x, num_rot)
+
+
+
+                x_batch[iter] = window_x
+                y_batch[iter] = window_y
+            yield (x_batch,y_batch)
+
+
+    print("\nTraining data with size: ", imgs_normal.shape)
+    print("The size of the y-data: ", gt_imgs.shape, "\n")
     try:
-        model.fit(x_train, y_train,
-                  epochs=200,
-                  batch_size=125,
-                  verbose=2,
-                  callbacks=[lr_callback,stop_callback])
+        model.fit_generator(generate_minibatch(),
+                            steps_per_epoch=500, # 500 * batch_size = 62500 which should be representative for the data set
+                            epochs=200,
+                            verbose=2,
+                            callbacks=[lr_callback,stop_callback])
     except KeyboardInterrupt:
         print("Keyboard interrupt")
         pass

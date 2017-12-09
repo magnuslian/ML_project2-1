@@ -69,8 +69,9 @@ def img_crop2(im, w, h, stride, padding):
     return list_patches
 
 
-def value_to_class(v, foreground_threshold):
+def value_to_class(v):
     # percentage of pixels > 1 required to assign a foreground label to a patch
+    foreground_threshold = 0.25
     df = np.sum(v)
     if df > foreground_threshold:
         return [1,0]
