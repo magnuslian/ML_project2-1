@@ -38,19 +38,19 @@ imgs_normal = helpers.normalize(imgs, 400, std=False)
 
 #Setting some callbacks
 lr_callback = ReduceLROnPlateau(monitor='acc',
-                                        factor=0.5,
-                                        patience=5,
-                                        verbose=1,
-                                        mode='auto',
-                                        epsilon=0.0001,
-                                        cooldown=0,
-                                        min_lr=0)
+                                factor=0.5,
+                                patience=4,
+                                verbose=1,
+                                mode='auto',
+                                epsilon=0.0001,
+                                cooldown=0,
+                                min_lr=0)
 
 stop_callback = EarlyStopping(monitor='acc',
-                          min_delta=0.0001,
-                          patience=11,
-                          verbose=1,
-                          mode='auto')
+                              min_delta=0.0001,
+                              patience=9,
+                              verbose=1,
+                              mode='auto')
 
 def create_model():
     model = Sequential()
@@ -127,7 +127,7 @@ x_test = helpers.normalize(imgs, 608, std=False)
 print("Creating patches...")
 img_patches = proHelpers.create_patches(x_test, 16, 16, PADDING)
 
-filename = 'window20.csv'
+filename = 'window24.csv'
 
 model = train()
 predicting_that_shit(model,filename,img_patches)

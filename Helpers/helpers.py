@@ -1,11 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import os
-from Given import given
+
 from sklearn import preprocessing
-from PIL import Image
 from skimage.exposure import rescale_intensity
+
+from Given import given
 
 
 IMG_PATCH_SIZE = 16
@@ -16,6 +15,13 @@ def normalize(data, window_size, mean = True, std = True):
     scaler.fit(data1)
     new_data=scaler.fit_transform(data1, y=None)
     out_data = np.reshape(new_data, (data.shape[0], window_size, window_size, 3))
+    return out_data
+
+def zero_mean(data, window_size): #Does exactly the same as the function above
+    data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
+    data1 -= np.mean(data1, axis=0)
+    #data1 /= np.std(data1, axis=0)
+    out_data = np.reshape(data1, (data.shape[0], window_size, window_size, 3))
     return out_data
 
 def load_training_data(datapath, number_of_images):
@@ -52,7 +58,7 @@ def sort_key(s):
     return s, int(n)
 
 
-def create_patches(imgs, foreground_threshold, patch_size, gt_imgs=[]):
+def create_patches(imgs, patch_size, gt_imgs=[]):
     print("Creating patches of the input data...")
     # Extract patches from input images
     img_patches = [given.img_crop(imgs[i], patch_size, patch_size) for i in range(len(imgs))]
@@ -64,7 +70,7 @@ def create_patches(imgs, foreground_threshold, patch_size, gt_imgs=[]):
 
     if len(gt_imgs) != 0:
         # Compute array based on foreground threshold
-        labels = np.asarray([given.value_to_class(np.mean(gt_patches[i]), foreground_threshold) for i in range(len(gt_patches))])
+        labels = np.asarray([given.value_to_class(np.mean(gt_patches[i])) for i in range(len(gt_patches))])
         # a list of 0's and 1's, depending on if the mean of the patch is greater than a given foreground_threshold,
         # which qualifies it to be a foreground patch (the index 1).
         return img_patches, labels.astype(np.float32)
@@ -108,12 +114,11 @@ def true_positive_rate(pred,y):
 def make_pred(pred):
     out = []
     for p in pred:
-        if p[0] <= 0.5:
+        if p[0] <= 0.30: # Remember to change this if we want the grey color.
             out.append(0)
         else:
             out.append(1)
     return out
-
 
 
 def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img, foreground_threshold, window_size):

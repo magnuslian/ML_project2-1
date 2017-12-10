@@ -11,17 +11,16 @@ from Helpers import helpers
 
 
 
-WINDOW_SIZES = [16,20,24]
-FOREGROUND_THRESHOLD = 0.25
+WINDOW_SIZES = 24
 PATCHES_PER_IMG = 625
+FILTER_SIZES = [(3,3),(5,5)]
 
 
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
-DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
+#DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
-NUM_TRAIN_IMAGES = 100
-NUM_TEST_IMAGES = 50
-
+NUM_TRAIN_IMAGES = 20
+#NUM_TEST_IMAGES = 50
 
 
 #Load training data
@@ -49,31 +48,15 @@ stop_callback = EarlyStopping(monitor='acc',
 def create_model(i, window):
     model = Sequential()
 
-    model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(window, window, 3), padding='same'))
+    model.add(Conv2D(32, FILTER_SIZE, activation='relu', input_shape=(window, window, 3), padding='same'))
     model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-    if i == 1:
-        model.add(Conv2D(32, (3, 3), activation='relu',padding='same'))
-    if i == 2:
-        model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-        model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-    if i == 3:
-        model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-        model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-        model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(32, (3, 3), activation='relu',padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.25))
 
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-    if i == 1:
-        model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-    if i == 2:
-        model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-        model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-    if i == 3:
-        model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-        model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-        model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.25))
 

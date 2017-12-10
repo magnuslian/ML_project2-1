@@ -5,12 +5,11 @@ import numpy as np
 
 from Helpers import helpers
 from Given import given
-import matplotlib.pyplot as plt
 
-label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Models\\window20.csv'
+label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\win24_0,3.csv'
 test_imgs =  "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
-imgs = helpers.load_test_data(test_imgs,50)
+imgs = helpers.load_test_data(test_imgs,5)
 
 h = 16
 w = 16
@@ -46,9 +45,13 @@ def reconstruct_from_labels(image_id):
         ie = min(i + h, imgheight)
         if prediction == 0:
             adata = np.zeros((w, h))
+        elif prediction == 1:
+            adata = np.ones((w, h))
         else:
             adata = np.ones((w, h))
-
+            for row in range(adata.shape[0]):
+                for col in range(adata.shape[1]):
+                    adata[row][col] -= 0.5
         im[j:je, i:ie] = binary_to_uint8(adata)
 
     cimg = given.concatenate_images(imgs[image_id-1], im)
@@ -57,7 +60,7 @@ def reconstruct_from_labels(image_id):
     #cimg2 = given.concatenate_images(cimg,overlay_img)
     #fig1 = plt.figure(figsize=(10, 10))  # create a figure with the default size
 
-    Image.fromarray(cimg).save('prediction_' + '%.3d' % image_id + '.png')
+    Image.fromarray(cimg).save('0,3_' + '%.3d' % image_id + '.png')
 
     return im
 

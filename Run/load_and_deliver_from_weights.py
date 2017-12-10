@@ -4,9 +4,11 @@ os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 import numpy as np
 
-from Models import cnnModel
 from Given import proHelpers, given
-from Helpers import the_model
+from Helpers import the_model, postProcessing
+
+
+PADDING = 4
 
 
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\test_set_images\\"
@@ -14,24 +16,24 @@ NUM_TEST_IMAGES = 50
 
 
 model = the_model.create_model()
-model.load_weights("C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Saved_Weights\\weights_BM.h5")
+model.load_weights("C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Saved_Weights\\weights_win24.h5")
 
-x_test = helpers.load_test_data(DATAPATH_TESTING, NUM_TEST_IMAGES)
-x_test = helpers.normalize(x_test, x_test.shape[1], std=False)
-
-# Make prediction and submission file
-test_image_patches = helpers.create_patches(x_test, 0.25, 16)
+imgs = helpers.load_test_data(DATAPATH_TESTING, NUM_TEST_IMAGES)
+x_test = helpers.normalize(imgs, 608, std=False)
+print("Creating patches...")
+img_patches = proHelpers.create_patches(x_test, 16, 16, PADDING)
 
 print("Predicting...")
-pred = model.predict(test_image_patches)
-
+pred = model.predict(img_patches)
 pred1 = helpers.make_pred(pred)
-pred2 = np.reshape(pred1, (50, 38, 38))
-pred3 = helpers.filterh(pred2)
-pred4 = np.reshape(pred3, (72200, 1))
-submission = helpers.create_submission_format()
-given.create_csv_submission(submission, pred4, "cleaned.csv")
 
+"""
+pred2 = np.reshape(pred1, (50, 38, 38))
+pred3 = postProcessing.filterh(pred2)
+pred4 = np.reshape(pred3, (72200, 1))
+"""
+submission = helpers.create_submission_format()
+given.create_csv_submission(submission, pred1, "win24_0,3.csv")
 """
 The pros
 

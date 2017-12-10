@@ -171,7 +171,7 @@ x_test = helpers.normalize(imgs, 608, std=False)
 print("Creating patches...")
 img_patches = proHelpers.create_patches(x_test, 16, 16, PADDING)
 
-filename = 'window20.csv'
+filename = 'window24.csv'
 
 model = train()
 predicting_that_shit(model,filename,img_patches)
