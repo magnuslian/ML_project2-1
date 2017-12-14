@@ -6,7 +6,7 @@ import numpy as np
 from Helpers import helpers
 from Given import given
 
-label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\win24_0,3.csv'
+label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Models\\window32.csv'
 test_imgs =  "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
 imgs = helpers.load_test_data(test_imgs,5)
@@ -48,22 +48,14 @@ def reconstruct_from_labels(image_id):
         elif prediction == 1:
             adata = np.ones((w, h))
         else:
-            adata = np.ones((w, h))
-            for row in range(adata.shape[0]):
-                for col in range(adata.shape[1]):
-                    adata[row][col] -= 0.5
+            adata = np.full((w, h), 0.5)
         im[j:je, i:ie] = binary_to_uint8(adata)
 
     cimg = given.concatenate_images(imgs[image_id-1], im)
-
-    #overlay_img = given.make_img_overlay(imgs[image_id-1], im)
-    #cimg2 = given.concatenate_images(cimg,overlay_img)
-    #fig1 = plt.figure(figsize=(10, 10))  # create a figure with the default size
-
     Image.fromarray(cimg).save('0,3_' + '%.3d' % image_id + '.png')
 
     return im
 
 
-for i in range(1,len(imgs)+1):
+for i in range(1,imgs.shape[0]+1):
     reconstruct_from_labels(i)

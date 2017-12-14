@@ -6,9 +6,6 @@ from skimage.exposure import rescale_intensity
 
 from Given import given
 
-
-IMG_PATCH_SIZE = 16
-
 def normalize(data, window_size, mean = True, std = True):
     data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
     scaler = preprocessing.StandardScaler(copy=True, with_mean=mean, with_std=std)
@@ -17,10 +14,11 @@ def normalize(data, window_size, mean = True, std = True):
     out_data = np.reshape(new_data, (data.shape[0], window_size, window_size, 3))
     return out_data
 
-def zero_mean(data, window_size): #Does exactly the same as the function above
+def zero_mean(data, window_size, std=False): #Does exactly the same as the function above
     data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
     data1 -= np.mean(data1, axis=0)
-    #data1 /= np.std(data1, axis=0)
+    if std:
+        data1 /= np.std(data1, axis=0)
     out_data = np.reshape(data1, (data.shape[0], window_size, window_size, 3))
     return out_data
 
@@ -46,7 +44,7 @@ def load_test_data(datapath, number_of_images):
     files.sort(key=sort_key)
 
     folder = []
-    for i in range(len(files)):
+    for i in range(number_of_images):
         folder.append(image_dir_test + files[i] + "\\" + files[i] + ".png")
 
     imgs_test = [given.load_image(folder[i]) for i in range(len(folder))]
@@ -114,14 +112,25 @@ def true_positive_rate(pred,y):
 def make_pred(pred):
     out = []
     for p in pred:
-        if p[0] <= 0.30: # Remember to change this if we want the grey color.
-            out.append(0)
+        if p[0] <= 0.40:
+            out.append(0) #Gives black
         else:
-            out.append(1)
+            out.append(1) #White
+    return out
+
+def make_pred_greyscale(pred):
+    out = []
+    for p in pred:
+        if p[0] <= 0.40:
+            out.append(0) #Gives black
+        elif p[0] > 0.40 and p[0] <= 0.60:
+            out.append(2) #Grey
+        else:
+            out.append(1) #White
     return out
 
 
-def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img, foreground_threshold, window_size):
+def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img, window_size):
 
     #SUBWINDOW_SIZE = window_size - 2 * padding # 20 - 4 = 16
 
@@ -172,7 +181,7 @@ def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img
             subimage_x = np.rot90(subimage_x, num_rot)
 
             # subimage_y has shape (16,16)
-            subimage_y = given.value_to_class(np.mean(subimage_y), foreground_threshold)
+            subimage_y = given.value_to_class(np.mean(subimage_y))
             # subimage_y has shape [1,0] or [0,1]
             x_ptrain[pic*num_patches_per_img + iter] = subimage_x
             y_ptrain[pic*num_patches_per_img + iter] = subimage_y
