@@ -2,7 +2,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 from Helpers import helpers, given
-from Model import the_model
+from Model import model
 
 WINDOW_SIZE = 32
 PADDING = (WINDOW_SIZE - 16) // 2
@@ -12,7 +12,7 @@ DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Mach
 NUM_TEST_IMAGES = 50
 
 
-model = the_model.create_model()
+model = model.create_model()
 model.load_weights('weights_best.h5')
 model.summary()
 

@@ -30,7 +30,7 @@ DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Mach
 NUM_TRAIN_IMAGES = 100
 NUM_TEST_IMAGES = 50
 
-PATCHES_PER_IMG = 625
+PATCHES_PER_IMG = 625 #Somewhat random number
 
 imgs, gt_imgs = helpers.load_training_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
 imgs_zero = helpers.zero_mean(imgs, 400, std=False)

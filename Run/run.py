@@ -2,7 +2,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 from Helpers import helpers, given
-from Model import the_model
+from Model import model
 
 WINDOW_SIZE = 32
 PADDING = (WINDOW_SIZE - 16) // 2
@@ -20,7 +20,7 @@ x_test = helpers.zero_mean(imgs, 608)
 img_patches = helpers.create_patches_test_data(x_test, 16, 16, PADDING)
 
 # Creating model and loading weights
-model = the_model.create_model()
+model = model.create_model()
 model.load_weights(FILEPATH_WEIGHTS)
 
 print("Predicting...")
