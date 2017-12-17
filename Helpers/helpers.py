@@ -1,26 +1,10 @@
 import numpy as np
 import os
 
-from sklearn import preprocessing
 from skimage.exposure import rescale_intensity
 
 from Given import given
 
-def normalize(data, window_size, mean = True, std = True):
-    data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
-    scaler = preprocessing.StandardScaler(copy=True, with_mean=mean, with_std=std)
-    scaler.fit(data1)
-    new_data=scaler.fit_transform(data1, y=None)
-    out_data = np.reshape(new_data, (data.shape[0], window_size, window_size, 3))
-    return out_data
-
-def zero_mean(data, window_size, std=False): #Does exactly the same as the function above
-    data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
-    data1 -= np.mean(data1, axis=0)
-    if std:
-        data1 /= np.std(data1, axis=0)
-    out_data = np.reshape(data1, (data.shape[0], window_size, window_size, 3))
-    return out_data
 
 def load_training_data(datapath, number_of_images):
     # Load all images
@@ -36,7 +20,6 @@ def load_training_data(datapath, number_of_images):
 
     return imgs, gt_imgs
 
-
 def load_test_data(datapath, number_of_images):
     image_dir_test = datapath
     files = os.listdir(image_dir_test)
@@ -51,182 +34,142 @@ def load_test_data(datapath, number_of_images):
 
     return np.asarray(imgs_test)
 
+# Sorts the image correctly on number instead of lexographic
+# Used in load_test_data
 def sort_key(s):
     s, n = s.split('_')
     return s, int(n)
 
 
-def create_patches(imgs, patch_size, gt_imgs=[]):
-    print("Creating patches of the input data...")
+# Zero-means the data, with possibility of standardizing as well
+def zero_mean(data, window_size, std=False):
+    data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
+    data1 -= np.mean(data1, axis=0)
+    if std:
+        data1 /= np.std(data1, axis=0)
+    out_data = np.reshape(data1, (data.shape[0], window_size, window_size, 3))
+    return out_data
+
+
+# Creates patches of the test data so that it fits the weights from the model
+# E.g if we trained the model with input size = 32 x 32 x 3,
+# these patches also have to be of that size.
+def create_patches_test_data(imgs, patch_size, stride, padding):
     # Extract patches from input images
-    img_patches = [given.img_crop(imgs[i], patch_size, patch_size) for i in range(len(imgs))]
-    gt_patches = [given.img_crop(gt_imgs[i], patch_size, patch_size) for i in range(len(gt_imgs))]
+    img_patches = [img_crop(imgs[i], patch_size, patch_size, stride, padding) for i in range(len(imgs))]
 
-    # Linearize list of patches
+    # Linearize list of patches, code from tf_aerial_images.py
     img_patches = np.asarray([img_patches[i][j] for i in range(len(img_patches)) for j in range(len(img_patches[i]))])
-    gt_patches = np.asarray([gt_patches[i][j] for i in range(len(gt_patches)) for j in range(len(gt_patches[i]))])
-
-    if len(gt_imgs) != 0:
-        # Compute array based on foreground threshold
-        labels = np.asarray([given.value_to_class(np.mean(gt_patches[i])) for i in range(len(gt_patches))])
-        # a list of 0's and 1's, depending on if the mean of the patch is greater than a given foreground_threshold,
-        # which qualifies it to be a foreground patch (the index 1).
-        return img_patches, labels.astype(np.float32)
 
     return img_patches
 
 
-def calculate_score(pred, sol):
-    if len(pred) != len(sol):
-        raise ValueError("The length of the prediction does not match the length of the solution")
-    sum = 0
-    for i in range(len(pred)):
-        if pred[i] == sol[i]:
-            sum += 1
-    score = round(sum/len(pred) * 100,2)
-    print("Accuracy: " + score + "%")
-    return score
+# Crops a single input image into the wished size.
+# Makes a crop of (16, 16) from the image, and then pads it so that it matches
+# the weights from the model.
+def img_crop(image, width, height, stride, padding):
+    list_patches = []
+    imgwidth = image.shape[0]
+    imgheight = image.shape[1]
+    if len(image.shape) == 3:
+        im = np.lib.pad(image, ((padding, padding), (padding, padding), (0, 0)), 'reflect')
+        for h in range(padding, imgheight + padding, stride):
+            for w in range(padding, imgwidth + padding, stride):
+                im_patch = im[w - padding:w + width + padding, h - padding:h + height + padding, :]
+                list_patches.append(im_patch)
+    return list_patches
 
 
-def create_submission_format():
-    submission = []
-    con = 0
-    for im in range(1, 51):
-        for row in range(0, 608, 16):
-            for col in range(0, 608, 16):
-                c = str(im).zfill(3) + '_' + str(row) + "_" + str(col)
-                con += 1
-                submission.append(c)
-    return submission
+# Takes in whole images as arguments and creates num_windows_per_img per image
+def create_random_patches_of_training_data(x_train, y_train, num_windows_per_img, window_size):
+    x_ptrain = np.empty((x_train.shape[0] * num_windows_per_img, window_size, window_size, 3))
+    y_ptrain = np.empty((y_train.shape[0] * num_windows_per_img, 2))
 
-def true_positive_rate(pred,y):
-    # Get non-zeros in prediction and grountruth arrays
-    zn = np.nonzero(pred)[0]
-    yn = np.nonzero(y)[0]
-
-    # percentage of indices with 1's in both yn and zn
-    TPR = (len(list(set(yn) & set(zn))) / float(len(pred))) * 100
-    TPR_round = round(TPR, 2)
-    return (str(TPR_round) + " %")
-
-def make_pred(pred):
-    out = []
-    for p in pred:
-        if p[0] <= 0.40:
-            out.append(0) #Gives black
-        else:
-            out.append(1) #White
-    return out
-
-def make_pred_greyscale(pred):
-    out = []
-    for p in pred:
-        if p[0] <= 0.40:
-            out.append(0) #Gives black
-        elif p[0] > 0.40 and p[0] <= 0.60:
-            out.append(2) #Grey
-        else:
-            out.append(1) #White
-    return out
-
-
-def create_random_patches_of_training_data(x_train, y_train, num_patches_per_img, window_size):
-
-    #SUBWINDOW_SIZE = window_size - 2 * padding # 20 - 4 = 16
-
-    x_ptrain = np.empty((x_train.shape[0] * num_patches_per_img, window_size, window_size, 3))
-    y_ptrain = np.empty((y_train.shape[0] * num_patches_per_img, 2))
-
-    # Iterate over how many patches you want per image
+    # Iterate over every image in the training set
     for pic in range(x_train.shape[0]):
-        # Create e.g 8 versions of each image
-        for iter in range(0, num_patches_per_img):
-
+        # Extract how many windows we want from each image
+        for iter in range(0, num_windows_per_img):
             width = x_train[pic].shape[0]
             height = x_train[pic].shape[1]
 
             # Random window from the image
-            randomw = np.random.randint(0, width - window_size + 1) # +2 includes one below (400 - 20 + 2 =) 382
-            # This is a random number which decides the starting column (leftmost)
+            randomw = np.random.randint(0, width - window_size + 1)
             randomh = np.random.randint(0, height - window_size + 1)
-            # This is a random number which decides the starting row (lowermost)
             subimage_x = x_train[pic][randomw:randomw + window_size, randomh:randomh + window_size]
-            # Shape is (window_size, window_size, 3)
             subimage_y = y_train[pic][randomw:randomw + window_size, randomh:randomh + window_size]
 
-            # Reflex
-            #subimage_x = np.lib.pad(subimage_x, ((padding, padding), (padding, padding), (0, 0)), 'reflect')
-            #subimage_y = np.lib.pad(subimage_y, ((padding, padding), (padding, padding)), 'reflect')
-
-            # IMAGE AUGMENTATION
-            """
-                Assuming that we want to create 625 patches per image (16,16,3 input)
-                There are 385*385 = 148k possible random patches. No worries.
-            """
-
-            # Contrast stretching
-            if np.random.randint(2) == 0:
-                subimage_x = rescale_intensity(subimage_x)
-
-            # Random flip vertically
-            if np.random.randint(2) == 0:
-                subimage_x = np.flipud(subimage_x)
-
-            # Random flip horizontally
-            if np.random.randint(2) == 0:
-                subimage_x = np.fliplr(subimage_x)
-
-            # Random rotation in steps of 90°
-            num_rot = np.random.randint(4)
-            subimage_x = np.rot90(subimage_x, num_rot)
-
-            # subimage_y has shape (16,16)
+            #Image augmentation on x, and create the value of corresponding y from ground truth.
+            subimage_x = image_augmentation(subimage_x)
             subimage_y = given.value_to_class(np.mean(subimage_y))
-            # subimage_y has shape [1,0] or [0,1]
-            x_ptrain[pic*num_patches_per_img + iter] = subimage_x
-            y_ptrain[pic*num_patches_per_img + iter] = subimage_y
+
+            x_ptrain[pic*num_windows_per_img + iter] = subimage_x
+            y_ptrain[pic*num_windows_per_img + iter] = subimage_y
         print("Finished processing ", pic + 1)
 
     return x_ptrain, y_ptrain
 
 
-def increase_training_set(x_train, y_train, NUM_OF_IMGS_CREATED_PER_IMGS, WINDOW_SIZE):
-    # Building a bigger data set by manipulating the training data
-    x_ptrain = np.empty((x_train.shape[0] * NUM_OF_IMGS_CREATED_PER_IMGS, WINDOW_SIZE, WINDOW_SIZE, 3))
-    y_ptrain = np.empty((y_train.shape[0] * NUM_OF_IMGS_CREATED_PER_IMGS, 2))
+# Building a bigger data set by manipulating the training data
+# Takes windows as input data (e.g 32 x 32)
+# Creates as many versions of the given windows as wanted
+def increase_training_set(x_train, y_train, num_windows_per_window, window_size):
+    x_ptrain = np.empty((x_train.shape[0] * num_windows_per_window, window_size, window_size, 3))
+    y_ptrain = np.empty((y_train.shape[0] * num_windows_per_window, 2))
 
-    for iter in range(0, NUM_OF_IMGS_CREATED_PER_IMGS):
+    for iter in range(0, num_windows_per_window):
         # Create e.g 8 versions of each patch
         for patch in range(x_train.shape[0]):
             subimage_x = x_train[patch]
             subimage_y = y_train[patch]
 
-            # IMAGE AUGMENTATION
-            """
-                Assuming that we want to create 8 new patches per patch, 
-                we have a 38.6% chance of getting 8 unique patches. 
-            """
+            subimage_x = image_augmentation(subimage_x)
 
-            # Contrast stretching
-            if np.random.randint(2) == 0:
-                subimage_x = rescale_intensity(subimage_x)
-
-            # Random flip vertically
-            if np.random.randint(2) == 0:
-                subimage_x = np.flipud(subimage_x)
-
-            # Random flip horizontally
-            if np.random.randint(2) == 0:
-                subimage_x = np.fliplr(subimage_x)
-
-            # Random rotation in steps of 90°
-            num_rot = np.random.randint(4)
-            subimage_x = np.rot90(subimage_x, num_rot)
-
-            # subimage_y has shape (16,16)
-            # subimage_y = given.value_to_class(np.mean(subimage_x), FOREGROUND_THRESHOLD)
-            # subimage_y has shape [1,0] or [0,1]
-            x_ptrain[patch * NUM_OF_IMGS_CREATED_PER_IMGS + iter] = subimage_x
-            y_ptrain[patch * NUM_OF_IMGS_CREATED_PER_IMGS + iter] = subimage_y
+            x_ptrain[patch * num_windows_per_window + iter] = subimage_x
+            y_ptrain[patch * num_windows_per_window + iter] = subimage_y
         print("Done creating version ", iter + 1, " of the patches")
     return x_ptrain, y_ptrain
+
+
+# Manipulates the image to change the order of the pixels.
+# The corresponding ground truth image is the same.
+def image_augmentation(window_x):
+    # Contrast stretching
+    if np.random.randint(2) == 0:
+        window_x = rescale_intensity(window_x)
+
+    # Random flip vertically
+    if np.random.randint(2) == 0:
+        window_x = np.flipud(window_x)
+
+    # Random flip horizontally
+    if np.random.randint(2) == 0:
+        window_x = np.fliplr(window_x)
+
+    # Random rotation in steps of 90°
+    num_rot = np.random.randint(4)
+    window_x = np.rot90(window_x, num_rot)
+
+    return window_x
+
+
+def create_submission_format():
+    submission = []
+    for im in range(1, 51):
+        for row in range(0, 608, 16):
+            for col in range(0, 608, 16):
+                c = str(im).zfill(3) + '_' + str(row) + "_" + str(col)
+                submission.append(c)
+    return submission
+
+
+# Makes the prediction of the correct format after model.predict
+# Takes in a matrix of prediction on the form (num_patches, 2)
+# E.g takes in [0.22, 0.78] and evaluates it to 0 (background).
+def make_pred(pred):
+    out = []
+    for p in pred:
+        if p[0] <= 0.50:
+            out.append(0) #Gives black
+        else:
+            out.append(1) #White
+    return out

@@ -2,6 +2,41 @@ import numpy as np
 
 #Some filters which can be applied to the predicted black/white image for cleaning
 
+def filterh(images, ratioroad=0.79, ratiobackground=0.31):
+    for nimage in range(images.shape[0]):
+        image = images[nimage]
+
+        image = rectfilterhor(image)
+        image = rectfilterver(image)
+
+        image = islandfilter(image)
+        image = islandfilter(image)
+        #close_img = ndimage.binary_closing(image)
+
+        image = filterver(image)
+        image = filterverd(image)
+        image = filterhor(image)
+        image = filterhord(image)
+
+        image = islandfilter(image)
+
+        image = rectfilterhor(image)
+        image = rectfilterver(image)
+        image = bigroad(image)
+
+        """
+        dir=directionfilterver(image)
+        if dir[0] and dir[1] :
+            image = verticalfilter(image)
+        elif dir[1]:
+            image = horitzontalfilter(image)
+        """
+        images[nimage] = image
+
+    return images
+
+
+
 def islandfilter(image):
     padimage = np.lib.pad(image, ((2, 2), (2, 2)), 'reflect')
     filter1 = np.array(((1, 1, 1, 0), (1, 0, 1, 0), (1, 1, 1, 0), (0, 0, 0, 0)))
@@ -192,35 +227,3 @@ def bigroad(image):
             padimage[:,i + 1]=padimage[:,i]
     return padimage[1:-1,1:-1]
 
-def filterh(images, ratioroad=0.79, ratiobackground=0.31):
-    for nimage in range(images.shape[0]):
-        image = images[nimage]
-
-        image = rectfilterhor(image)
-        image = rectfilterver(image)
-
-        image = islandfilter(image)
-        image = islandfilter(image)
-        #close_img = ndimage.binary_closing(image)
-
-        image = filterver(image)
-        image = filterverd(image)
-        image = filterhor(image)
-        image = filterhord(image)
-
-        image = islandfilter(image)
-
-        image = rectfilterhor(image)
-        image = rectfilterver(image)
-        image = bigroad(image)
-
-        """
-        dir=directionfilterver(image)
-        if dir[0] and dir[1] :
-            image = verticalfilter(image)
-        elif dir[1]:
-            image = horitzontalfilter(image)
-        """
-        images[nimage] = image
-
-    return images

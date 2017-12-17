@@ -1,7 +1,7 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
-from keras.models import Sequential, load_model, save_model
+from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.regularizers import l2
@@ -28,7 +28,7 @@ NUM_TRAIN_IMAGES = 20
 imgs, gt_imgs = helpers.load_training_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
 
 #Normalizing the training data
-imgs = helpers.normalize(imgs, 400, std=False)
+imgs = helpers.zero_mean(imgs, 400, std=False)
 
 # Create patches of size window_size from the training data
 x_train, y_train = helpers.create_random_patches_of_training_data(imgs, gt_imgs,

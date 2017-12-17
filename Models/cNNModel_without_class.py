@@ -9,7 +9,7 @@ from keras.optimizers import Adam
 from keras.regularizers import l2
 
 from Helpers import helpers
-from Given import given, proHelpers
+from Given import given
 
 
 PATCH_SIZE = 16
@@ -22,7 +22,7 @@ DROPOUT = 0.25
 REGULIZER = 1e-7
 
 
-FILEPATH_SAVE_WEIGHTS = 'weights_win32.h5'
+FILEPATH_SAVE_WEIGHTS = 'weights_best.h5'
 
 
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
@@ -37,7 +37,7 @@ PATCHES_PER_IMG = 625
 imgs, gt_imgs = helpers.load_training_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
 
 #Zero-center the training data
-imgs_zero = helpers.normalize(imgs, 400, std=False)
+imgs_zero = helpers.zero_mean(imgs, 400, std=False) #Had normalize before
 
 #Setting some callbacks
 lr_callback = ReduceLROnPlateau(monitor='acc',
@@ -60,13 +60,16 @@ def create_model():
 
     model.add(Conv2D(32, FIRST_FILTER, activation='relu', padding='same', input_shape=(WINDOW_SIZE, WINDOW_SIZE, 3)))
     model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-    model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=POOL_SIZE))
     model.add(Dropout(DROPOUT))
 
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-    model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(MaxPooling2D(pool_size=POOL_SIZE))
+    model.add(Dropout(DROPOUT))
+
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=POOL_SIZE))
     model.add(Dropout(DROPOUT))
 
@@ -116,9 +119,9 @@ def train():
 def predicting_that_shit(model):
     # Fix the test data
     imgs = helpers.load_test_data(DATAPATH_TESTING, NUM_TEST_IMAGES)
-    x_test = helpers.normalize(imgs, 608, std=False)
+    x_test = helpers.zero_mean(imgs, 608, std=False)
     print("Creating patches...")
-    img_patches = proHelpers.create_patches(x_test, 16, 16, PADDING)
+    img_patches = helpers.create_patches_test_data(x_test, 16, 16, PADDING)
 
     filename = 'window32.csv'
 
