@@ -1,12 +1,11 @@
-#!/usr/bin/python
 from PIL import Image
 import math
 import numpy as np
 
-from Helpers import helpers
-from Given import given
+from Helpers import helpers, given
 
-label_file = 'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\win24_greyscale.csv'
+label_file = 'window32.csv'
+    #'C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\ML_project2-1\\Run\\win24_greyscale.csv'
 test_imgs =  "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
 imgs = helpers.load_test_data(test_imgs,5)
@@ -18,8 +17,8 @@ imgheight = int(math.ceil((600.0 / h)) * h)
 nc = 3
 
 
-# Convert an array of binary labels to a uint8
 def binary_to_uint8(img):
+    """Convert an array of binary labels to a uint8"""
     rimg = (img * 255).round().astype(np.uint8)
     return rimg
 
@@ -51,7 +50,7 @@ def reconstruct_from_labels(image_id):
             adata = np.full((w, h), 0.5)
         im[j:je, i:ie] = binary_to_uint8(adata)
 
-    cimg = given.concatenate_images(imgs[image_id-1], im)
+    cimg = given.concatenate_images(imgs[image_id - 1], im)
     Image.fromarray(cimg).save('0,3_' + '%.3d' % image_id + '.png')
 
     return im

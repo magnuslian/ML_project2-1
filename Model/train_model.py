@@ -1,18 +1,18 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
-from keras.models import Sequential, load_model, save_model
+from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.optimizers import Adam
 from keras.regularizers import l2
 
-from Helpers import helpers
-from Given import given
+from Helpers import helpers, given
 
-
+# Initialize fixed parameters
 PATCH_SIZE = 16
+STRIDE = PATCH_SIZE
 WINDOW_SIZE = 32
 PADDING = (WINDOW_SIZE - PATCH_SIZE) // 2
 POOL_SIZE = (2,2)
@@ -24,7 +24,6 @@ REGULIZER = 1e-7
 
 FILEPATH_SAVE_WEIGHTS = 'weights_best.h5'
 
-
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
 
@@ -33,14 +32,12 @@ NUM_TEST_IMAGES = 50
 
 PATCHES_PER_IMG = 625
 
-#Load training data
 imgs, gt_imgs = helpers.load_training_data(DATAPATH_TRAINING, NUM_TRAIN_IMAGES)
+imgs_zero = helpers.zero_mean(imgs, 400, std=False)
 
-#Zero-center the training data
-imgs_zero = helpers.zero_mean(imgs, 400, std=False) #Had normalize before
-
-#Setting some callbacks
-lr_callback = ReduceLROnPlateau(monitor='acc',
+# Setting some callbacks. A callback is something that will be
+# activated in the model.fit if certain criterias are fulfilled.
+lr_callback = ReduceLROnPlateau(monitor='acc',        # Reduces learning rate if accuracy does not improve for 4 epochs
                                 factor=0.5,
                                 patience=4,
                                 verbose=1,
@@ -49,7 +46,7 @@ lr_callback = ReduceLROnPlateau(monitor='acc',
                                 cooldown=0,
                                 min_lr=0)
 
-stop_callback = EarlyStopping(monitor='acc',
+stop_callback = EarlyStopping(monitor='acc',          # Stops the training if accuracy does not improve for 9 epochs
                               min_delta=0.0001,
                               patience=9,
                               verbose=1,
@@ -87,7 +84,7 @@ def train():
     model = create_model()
 
     # Create patches of size window_size from the training data
-    x_train, y_train = helpers.create_random_patches_of_training_data(imgs_zero, gt_imgs,
+    x_train, y_train = helpers.create_random_windows_of_training_data(imgs_zero, gt_imgs,
                                                                       PATCHES_PER_IMG,
                                                                       WINDOW_SIZE)
     print("\nTraining data with size: ", x_train.shape)
@@ -116,25 +113,24 @@ def train():
         print("Weights are saved.\n")
     return model
 
-def predicting_that_shit(model):
+def predict_testdata(model):
     # Fix the test data
     imgs = helpers.load_test_data(DATAPATH_TESTING, NUM_TEST_IMAGES)
     x_test = helpers.zero_mean(imgs, 608, std=False)
     print("Creating patches...")
-    img_patches = helpers.create_patches_test_data(x_test, 16, 16, PADDING)
+    img_patches = helpers.create_patches_test_data(x_test, PATCH_SIZE, STRIDE, PADDING)
 
     filename = 'window32.csv'
 
     # Run prediction
     print("Predicting...")
-    Z = model.predict(img_patches)
-    Zi = helpers.make_pred(Z)
+    pred = model.predict(img_patches)
+    prediction = helpers.make_pred(pred)
     print("Prediction ready. Creating file...")
 
     submission = helpers.create_submission_format()
-    given.create_csv_submission(submission, Zi, filename)
-
+    given.create_csv_submission(submission, prediction, filename)
 
 
 model = train()
-predicting_that_shit(model)
+predict_testdata(model)

@@ -9,15 +9,15 @@ def load_image(infilename):
     return data
 
 
-#Used in concatenate_images
 def img_float_to_uint8(img):
+    """Used in concatenate_images"""
     rimg = img - np.min(img)
     rimg = (rimg / np.max(rimg) * 255).round().astype(np.uint8)
     return rimg
 
 
-# Concatenate an image and its groundtruth
 def concatenate_images(img, gt_img):
+    """Concatenate an image and its groundtruth"""
     nChannels = len(gt_img.shape)
     w = gt_img.shape[0]
     h = gt_img.shape[1]
@@ -35,8 +35,7 @@ def concatenate_images(img, gt_img):
 
 
 def value_to_class(v):
-    # percentage of pixels > 1 required to assign a foreground label to a patch
-    foreground_threshold = 0.25
+    foreground_threshold = 0.25 #percentage of pixels > 1 required to assign a foreground label to a patch
     df = np.sum(v)
     if df > foreground_threshold:
         return [1,0]
@@ -44,8 +43,8 @@ def value_to_class(v):
         return [0,1]
 
 
-# Convert array of labels to an image
 def label_to_img(imgwidth, imgheight, w, h, labels):
+    """Convert array of labels to an image"""
     im = np.zeros([imgwidth, imgheight])
     idx = 0
     for i in range(0, imgheight, h):
@@ -56,8 +55,8 @@ def label_to_img(imgwidth, imgheight, w, h, labels):
 
 
 def create_csv_submission(ids, y_pred, name):
-    """
-    Creates an output file in csv format for submission to kaggle
+    """Creates an output file in csv format for submission to kaggle.
+
     Arguments: ids (event ids associated with each prediction)
                y_pred (predicted class labels)
                name (string name of .csv output file to be created)

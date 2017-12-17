@@ -3,17 +3,16 @@ import os
 
 from skimage.exposure import rescale_intensity
 
-from Given import given
+from Helpers import given
 
 
 def load_training_data(datapath, number_of_images):
-    # Load all images
+    """Load a number of training images and corresponding ground truths"""
     image_dir = datapath + "images/"
     files = os.listdir(image_dir)
     print("Loading " + str(number_of_images) + " images")
     imgs = np.asarray([given.load_image(image_dir + files[i]) for i in range(number_of_images)])
 
-    # Load all groundtruth images
     gt_dir = datapath + "groundtruth/"
     print("Loading " + str(number_of_images) + " groundtruth images")
     gt_imgs = np.asarray([given.load_image(gt_dir + files[i]) for i in range(number_of_images)])
@@ -30,19 +29,24 @@ def load_test_data(datapath, number_of_images):
     for i in range(number_of_images):
         folder.append(image_dir_test + files[i] + "\\" + files[i] + ".png")
 
-    imgs_test = [given.load_image(folder[i]) for i in range(len(folder))]
+    imgs_test = np.asarray([given.load_image(folder[i]) for i in range(len(folder))])
 
-    return np.asarray(imgs_test)
+    return imgs_test
 
-# Sorts the image correctly on number instead of lexographic
-# Used in load_test_data
-def sort_key(s):
-    s, n = s.split('_')
-    return s, int(n)
+def sort_key(input):
+    """Sorts the image numerically instead of lexographically
+
+    Used in load_test_data
+    :param input: The filename of one test image
+    :return: The first part of the filename as a token, and the image number
+    """
+    token1, image_number = input.split('_')
+
+    return token1, int(image_number)
 
 
-# Zero-means the data, with possibility of standardizing as well
 def zero_mean(data, window_size, std=False):
+    """Zero-means the data, with possibility of standardizing as well"""
     data1 = np.reshape(data, (data.shape[0] * window_size * window_size, 3))
     data1 -= np.mean(data1, axis=0)
     if std:
@@ -51,10 +55,16 @@ def zero_mean(data, window_size, std=False):
     return out_data
 
 
-# Creates patches of the test data so that it fits the weights from the model
-# E.g if we trained the model with input size = 32 x 32 x 3,
-# these patches also have to be of that size.
 def create_patches_test_data(imgs, patch_size, stride, padding):
+    """Creates patches of the test data so that it fits the weights from the model.
+
+    E.g if we trained the model with input size = 32 x 32 x 3, these patches also have to be of that size.
+    :param imgs: Test images
+    :param patch_size: Size of patches on Kaggle. Should be 16
+    :param stride: Distance between the start of one patch, to the next (to the right and below)
+    :param padding: Padding of the image
+    :return: Test images divided into patches that matches the window size from the model
+    """
     # Extract patches from input images
     img_patches = [img_crop(imgs[i], patch_size, patch_size, stride, padding) for i in range(len(imgs))]
 
@@ -64,10 +74,19 @@ def create_patches_test_data(imgs, patch_size, stride, padding):
     return img_patches
 
 
-# Crops a single input image into the wished size.
-# Makes a crop of (16, 16) from the image, and then pads it so that it matches
-# the weights from the model.
+#
+# M
 def img_crop(image, width, height, stride, padding):
+    """Crops a single input image into the wished size.
+
+    Makes a crop of 16 x 16 from the image, and then pads it so that it matches the weights from the model.
+    :param image: One test image
+    :param width: Width of the patch. Should be 16.
+    :param height: Height of the patch. Should be 16.
+    :param stride: Distance between the start of one patch, to the next (to the right and below)
+    :param padding: Padding of the image
+    :return: A list of all the patches in the image correctly padded to match the window size of the model.
+    """
     list_patches = []
     imgwidth = image.shape[0]
     imgheight = image.shape[1]
@@ -80,8 +99,15 @@ def img_crop(image, width, height, stride, padding):
     return list_patches
 
 
-# Takes in whole images as arguments and creates num_windows_per_img per image
-def create_random_patches_of_training_data(x_train, y_train, num_windows_per_img, window_size):
+def create_random_windows_of_training_data(x_train, y_train, num_windows_per_img, window_size):
+    """Takes in whole images as arguments and creates num_windows_per_img per image
+
+    :param x_train: The training data (Google Maps images).
+    :param y_train: The training data (ground truth images).
+    :param num_windows_per_img: Desired number of windows which should be created per image.
+    :param window_size: Window size of each window created.
+    :return: All the created windows and corresponding label.
+    """
     x_ptrain = np.empty((x_train.shape[0] * num_windows_per_img, window_size, window_size, 3))
     y_ptrain = np.empty((y_train.shape[0] * num_windows_per_img, 2))
 
@@ -109,30 +135,15 @@ def create_random_patches_of_training_data(x_train, y_train, num_windows_per_img
     return x_ptrain, y_ptrain
 
 
-# Building a bigger data set by manipulating the training data
-# Takes windows as input data (e.g 32 x 32)
-# Creates as many versions of the given windows as wanted
-def increase_training_set(x_train, y_train, num_windows_per_window, window_size):
-    x_ptrain = np.empty((x_train.shape[0] * num_windows_per_window, window_size, window_size, 3))
-    y_ptrain = np.empty((y_train.shape[0] * num_windows_per_window, 2))
-
-    for iter in range(0, num_windows_per_window):
-        # Create e.g 8 versions of each patch
-        for patch in range(x_train.shape[0]):
-            subimage_x = x_train[patch]
-            subimage_y = y_train[patch]
-
-            subimage_x = image_augmentation(subimage_x)
-
-            x_ptrain[patch * num_windows_per_window + iter] = subimage_x
-            y_ptrain[patch * num_windows_per_window + iter] = subimage_y
-        print("Done creating version ", iter + 1, " of the patches")
-    return x_ptrain, y_ptrain
-
-
-# Manipulates the image to change the order of the pixels.
-# The corresponding ground truth image is the same.
+#
+# .
 def image_augmentation(window_x):
+    """Manipulates the image to change the order of the pixels.
+
+    The corresponding ground truth image will not change.
+    :param window_x: The window to be manipulated.
+    :return: The window after manipulation
+    """
     # Contrast stretching
     if np.random.randint(2) == 0:
         window_x = rescale_intensity(window_x)
@@ -162,10 +173,13 @@ def create_submission_format():
     return submission
 
 
-# Makes the prediction of the correct format after model.predict
-# Takes in a matrix of prediction on the form (num_patches, 2)
-# E.g takes in [0.22, 0.78] and evaluates it to 0 (background).
 def make_pred(pred):
+    """Makes the prediction of the correct format after model.predict
+
+    E.g takes in [0.22, 0.78] and evaluates it to 0 (background).
+    :param pred: A matrix of prediction on the form (num_patches, 2)
+    :return: A list of predictions to the input matrix
+    """
     out = []
     for p in pred:
         if p[0] <= 0.50:

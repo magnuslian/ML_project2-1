@@ -1,3 +1,9 @@
+"""Our model.
+
+This is the model behind the 'weights_best.h5'.
+The corresponding submission file is 'window32.csv'
+"""
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
@@ -6,6 +12,7 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.regularizers import l2
 
+# Initialize fixed parameters
 WINDOW_SIZE = 32
 POOL_SIZE = (2,2)
 NEURONS = 256
