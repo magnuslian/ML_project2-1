@@ -3,7 +3,7 @@
 
 *Magnus Lysholm Lian, Jørgen Frost Bø, Raul Villalba Felix*
 
-
+Possibly som introduction here
 
 ### External libraries
 
@@ -31,13 +31,13 @@ Please provide the correct path for both training and test data to be able to ru
 
 - *Helpers:* Contains 5 files. `given.py` and `submission_to_mask.py` were given at the start of the project.
 The first is heavily used in the code, and the second was used to create some of the masks in the report.
-`helpers.py` contains some necessary help methods and `post_processing.py` contains all the code we used for the
+`helpers.py` contains some necessary help methods. `post_processing.py` contains all the code we used for the
 postprocessing part of our submission. `model&hyper_parameter_tuning.py` contains an example of how we
 evaluated our model and tested for the best hyper parameters. Note the code for plotting the validation loss/accuracy
 per epoch which were used in the report. This file is runable.
-- *Model:* Contains 2 files. `model.py` contains our model ans is called in some other files.
+- *Model:* Contains 2 files. `model.py` contains our model and is called in some other files.
 'train_model.py' is a complete setup of how we trained our model. This file is runable.
-- *Plots:* Contains 1 file. 'plot_zero_mean.py' is the code for creating the plot of the initial data before and
+- *Plots:* Contains 1 file. `plot_zero_mean.py` is the code for creating the plot of the initial data before and
 after zero-mean.
 - *Run:* Contains 2 files. `run.py` is the file which creates the submission for our best effort model.
 `weights_best.h5` is the weights for this model.
