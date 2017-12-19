@@ -3,7 +3,8 @@
 
 *Magnus Lysholm Lian, Jørgen Frost Bø, Raul Villalba Felix*
 
-Possibly som introduction here
+This project presents our solution to the road segmentation task. We implemented a convolutional neural network which
+got us a score of 86,3% on Kaggle.
 
 ### External libraries
 
@@ -23,18 +24,20 @@ have to be put in the file `test_set_images` as they were when downloaded.
 
 ### Train
 
-We have provided the file `train_model.py` for those who wish to run the model from the ground.
+We have provided the file `train_model.py` for those who wish to run the model from scratch.
 This will however take some time, depending on the computer setup. We used approximately 40 hours.
 Please provide the correct path for both training and test data to be able to run the file.
 
 ### Contents
 
 - *Helpers:* Contains 5 files. `given.py` and `submission_to_mask.py` were given at the start of the project.
-The first is heavily used in the code, and the second was used to create some of the masks in the report.
-`helpers.py` contains some necessary help methods. `post_processing.py` contains all the code we used for the
+The first consists of the help methods we were given from start.
+The second was used to create some of the masks in the report. `helpers.py` contains some necessary help methods that
+we have created ourselves.
+`post_processing.py` contains all the code we used for the
 postprocessing part of our submission. `model&hyper_parameter_tuning.py` contains an example of how we
-evaluated our model and tested for the best hyper parameters. Note the code for plotting the validation loss/accuracy
-per epoch which were used in the report. This file is runable.
+evaluated our model when searching for the best combination of hyper parameters. Note the code for plotting the
+validation loss/accuracy per epoch which were used in the report. This file is runable.
 - *Model:* Contains 2 files. `model.py` contains our model and is called in some other files.
 'train_model.py' is a complete setup of how we trained our model. This file is runable.
 - *Plots:* Contains 1 file. `plot_zero_mean.py` is the code for creating the plot of the initial data before and

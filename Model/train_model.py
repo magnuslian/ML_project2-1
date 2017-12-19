@@ -13,16 +13,16 @@ from Helpers import helpers, given
 # Initialize fixed parameters
 PATCH_SIZE = 16
 STRIDE = PATCH_SIZE
-WINDOW_SIZE = 32
+WINDOW_SIZE = 48
 PADDING = (WINDOW_SIZE - PATCH_SIZE) // 2
 POOL_SIZE = (2,2)
-NEURONS = 256
+NEURONS = 128
 FIRST_FILTER = (5,5)
 DROPOUT = 0.25
 REGULIZER = 1e-7
 
 
-FILEPATH_SAVE_WEIGHTS = 'weights_best.h5'
+FILEPATH_SAVE_WEIGHTS = 'weights_best_v2.h5'
 
 DATAPATH_TRAINING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\training\\"
 DATAPATH_TESTING = "C:\\Users\\magnu\\Documents\\NTNU\\3 (Utveksling EPFL)\\Machine Learning\\Prosjekt2\\Data\\test_set_images\\"
@@ -120,7 +120,7 @@ def predict_testdata(model):
     print("Creating patches...")
     img_patches = helpers.create_patches_test_data(x_test, PATCH_SIZE, STRIDE, PADDING)
 
-    filename = 'window32.csv'
+    filename = 'window32.v2.csv'
 
     # Run prediction
     print("Predicting...")
