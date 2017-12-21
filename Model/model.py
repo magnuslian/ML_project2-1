@@ -15,7 +15,7 @@ from keras.regularizers import l2
 # Initialize fixed parameters
 WINDOW_SIZE = 32
 POOL_SIZE = (2,2)
-NEURONS = 256
+NEURONS = 128
 FIRST_FILTER = (5,5)
 DROPOUT = 0.25
 REGULARIZER = 1e-7
@@ -25,19 +25,22 @@ def create_model():
 
     model.add(Conv2D(32, FIRST_FILTER, activation='relu', padding='same', input_shape=(WINDOW_SIZE, WINDOW_SIZE, 3)))
     model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-    model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=POOL_SIZE))
     model.add(Dropout(DROPOUT))
 
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-    model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(MaxPooling2D(pool_size=POOL_SIZE))
+    model.add(Dropout(DROPOUT))
+
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=POOL_SIZE))
     model.add(Dropout(DROPOUT))
 
     model.add(Flatten())
     model.add(Dense(NEURONS, activation='relu', kernel_regularizer=l2(REGULARIZER)))
-    model.add(Dropout(2*DROPOUT))
+    model.add(Dropout(DROPOUT * 2))
     model.add(Dense(2, activation='softmax', kernel_regularizer=l2(REGULARIZER)))
 
     return model
