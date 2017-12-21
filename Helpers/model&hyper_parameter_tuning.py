@@ -12,9 +12,9 @@ from Helpers import helpers
 # Initialize fixed parameters
 WINDOW_SIZE = 32
 PATCHES_PER_IMG = 625
-NEURONS = 256
+NEURONS = 128
 FILTER_SIZE = (5,5)
-REGULARIZER = [1e-7,1e-6]
+REGULARIZER = 1e-7
 EPOCHS = 50
 
 # Initialize parameters to be tested. This works as an example of possible hyper parameters to test
@@ -42,13 +42,16 @@ def create_model(lr, drop):
 
     model.add(Conv2D(32, FILTER_SIZE, activation='relu', input_shape=(WINDOW_SIZE, WINDOW_SIZE, 3), padding='same'))
     model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
-    model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(drop))
 
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
     model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-    model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(drop))
+
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(drop))
 
@@ -75,8 +78,8 @@ def train_and_evaluate(x_train, y_train):
     best_learning_rate = -1
     for learning_rate in LEARNING_RATES:
         for drop in DROPOUTS:
-            print("LR: ", learning_rate)
-            print("\nDrop: ", drop)
+            print("\nLR: ", learning_rate)
+            print("Drop: ", drop)
 
             model = create_model(learning_rate, drop)   #Create the model with the given parameters
 

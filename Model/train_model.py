@@ -1,12 +1,8 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.optimizers import Adam
-from keras.regularizers import l2
 
 from Helpers import helpers, given
 from Model import model as m1
