@@ -4,7 +4,7 @@
 *Magnus Lysholm Lian, Jørgen Frost Bø, Raul Villalba Felix*
 
 This project presents our solution to the road segmentation task. We implemented a convolutional neural network which
-got us a score of 86,3% on Kaggle.
+got us a Mean F score of 0,892 on Kaggle.
 
 ### External libraries
 
@@ -18,14 +18,14 @@ Keras uses TensorFlow as backend. Please be certain that both of these libraries
 ### Run
 
 To save time to create the prediction file, we have already trained the model and saved
-the weights in the file `weights_best.h5`. To get the prediction file, please run the `run.py`.
+the weights in the file `weights.h5`. To get the prediction file, please run the `run.py`.
 Keep in mind that you will have to provide a valid datapath for the test data to be able to run the file. The images
 have to be put in the file `test_set_images` as they were when downloaded.
 
 ### Train
 
 We have provided the file `train_model.py` for those who wish to run the model from scratch.
-This will however take some time, depending on the computer setup. We used approximately 40 hours.
+This will however take some time, depending on the computer setup.
 Please provide the correct path for both training and test data to be able to run the file.
 
 ### Contents
@@ -43,4 +43,4 @@ validation loss/accuracy per epoch which were used in the report. This file is r
 - *Plots:* Contains 1 file. `plot_zero_mean.py` is the code for creating the plot of the initial data before and
 after zero-mean.
 - *Run:* Contains 2 files. `run.py` is the file which creates the submission for our best effort model.
-`weights_best.h5` is the weights for this model.
+`weights.h5` is the weights for this model.
