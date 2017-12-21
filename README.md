@@ -6,9 +6,15 @@
 This project presents our solution to the road segmentation task. We implemented a convolutional neural network which
 got us a Mean F score of 0,892 on Kaggle.
 
-### External libraries
+### System and software requirements
 
-We have used two external libraries for this project:
+We trained our model on the following system:
+
+- Windows 10 64-bit
+- Intel Core i7-6650U @ 3.40 GHz
+- 16 GB RAM
+
+We did not use a GPU. We have also used two external libraries for this project:
 
 - [Keras version 2.0.8](https://keras.io/#installation)
 - [TensorFlow version 1.2.1](https://www.tensorflow.org/install/)
@@ -21,12 +27,14 @@ To save time to create the prediction file, we have already trained the model an
 the weights in the file `weights.h5`. To get the prediction file, please run the `run.py`.
 Keep in mind that you will have to provide a valid datapath for the test data to be able to run the file. The images
 have to be put in the file `test_set_images` as they were when downloaded.
+Running the file should take maximum 10 minutes.
 
 ### Train
 
 We have provided the file `train_model.py` for those who wish to run the model from scratch.
 This will however take some time, depending on the computer setup.
 Please provide the correct path for both training and test data to be able to run the file.
+It took about 35 hours to train the model.
 
 ### Contents
 
