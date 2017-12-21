@@ -281,8 +281,8 @@ def bigroad(image):
 
     hor = np.sum(padimage, axis=0)
     ver = np.sum(padimage, axis=1)
-    allh = np.ones(38)
-    allv = np.ones((1, 38))
+    allh = np.ones(40)
+    allv = np.ones((1, 40))
 
     # If there are two rows or columns next to each other,
     # and one has less than 3 background patches and the other less than 6,
